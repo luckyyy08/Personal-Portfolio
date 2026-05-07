@@ -1,17 +1,51 @@
-"
-                            href="index.html">Home</a>
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Web Developer</title>
+    <meta name="description"
+        content="Professional portfolio of a Full Stack Web Developer. Showcasing projects, skills, and experience.">
+    <meta name="keywords" content="Web Developer, Portfolio, Full Stack, Frontend, Backend, PHP, JavaScript">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-body text-body">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top glassmorphism">
+        <div class="container">
+            <a class="navbar-brand fw-bold font-outfit text-gradient" href="index.html">
+                <i class="fa-solid fa-code me-2"></i>DevPortfolio
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-index" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($current_page == 'about.html') ? 'active' : ''; ?>"
-                            href="about.html">About</a>
+                        <a class="nav-link" id="nav-about" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($current_page == 'projects.html') ? 'active' : ''; ?>"
-                            href="projects.html">Projects</a>
+                        <a class="nav-link" id="nav-projects" href="projects.html">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($current_page == 'contact.html') ? 'active' : ''; ?>"
-                            href="contact.html">Contact</a>
+                        <a class="nav-link active" id="nav-contact" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
                         <button class="btn btn-outline-theme rounded-circle" id="themeToggle" aria-label="Toggle Theme">
@@ -26,32 +60,6 @@
             </div>
         </div>
     </nav>
-
-// Form Submission handling for display purposes
-$success_msg = "";
-$error_msg = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_contact'])) {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $subject = htmlspecialchars($_POST['subject']);
-    $message = htmlspecialchars($_POST['message']);
-
-    // Basic validation
-    if (!empty($name) && !empty($email) && !empty($message) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-        // Option 1: Use PHP mail() - Requires server config
-        // $to = "your-email@example.com";
-        // $headers = "From: " . $email;
-        // mail($to, $subject, $message, $headers);
-
-        $success_msg = "Thank you, $name! Your message has been sent successfully. I will get back to you soon.";
-    } else {
-        $error_msg = "Please fill in all required fields with a valid email.";
-    }
-}
-?>
-
 <!-- Page Header -->
 <section class="pt-5 mt-5 pb-4">
     <div class="container pt-5 text-center" data-aos="fade-down">
@@ -219,7 +227,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_contact'])) {
                 </div>
             </div>
             <div class="text-center text-muted mt-5 pt-4 border-top">
-                <p class="mb-0">&copy; <?= date('Y'); ?> DevPortfolio. All Rights Reserved.</p>
+                <p class="mb-0">&copy;  DevPortfolio. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
