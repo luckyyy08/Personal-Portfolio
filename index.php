@@ -4,11 +4,12 @@
 <section class="hero-section" id="home">
     <div class="hero-blob hero-blob-1"></div>
     <div class="hero-blob hero-blob-2"></div>
-    
+
     <div class="container">
         <div class="row align-items-center gy-5">
             <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
-                <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill border border-primary font-outfit">
+                <span
+                    class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill border border-primary font-outfit">
                     <i class="fa-solid fa-sparkles me-1"></i> Available for work
                 </span>
                 <h1 class="display-3 fw-bold font-outfit mb-3">
@@ -19,22 +20,31 @@
                     I'm a <span class="typed-text text-body fw-semibold"></span>
                 </h2>
                 <p class="lead mb-5 text-muted">
-                    A passionate web developer creating beautiful, responsive, and user-friendly web applications. I turn ideas into elegant digital solutions.
+                    A passionate web developer creating beautiful, responsive, and user-friendly web applications. I
+                    turn ideas into elegant digital solutions.
                 </p>
                 <div class="d-flex flex-wrap gap-3 mb-5">
-                    <a href="contact.php" class="btn btn-gradient px-4 py-3 rounded-pill shadow-lg">Hire Me <i class="fa-solid fa-paper-plane ms-2"></i></a>
-                    <a href="projects.php" class="btn btn-outline-theme px-4 py-3 rounded-pill">View Work <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    <a href="contact.php" class="btn btn-gradient px-4 py-3 rounded-pill shadow-lg">Hire Me <i
+                            class="fa-solid fa-paper-plane ms-2"></i></a>
+                    <a href="projects.php" class="btn btn-outline-theme px-4 py-3 rounded-pill">View Work <i
+                            class="fa-solid fa-arrow-right ms-2"></i></a>
                 </div>
                 <div class="social-icons d-flex gap-3">
-                    <a href="https://github.com/luckyyy08" target="_blank" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/lokesh-ahire" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://www.instagram.com/_luckyyy.08/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="mailto:lokeshahire85@gmail.com" class="social-icon" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://github.com/luckyyy08" target="_blank" class="social-icon" aria-label="GitHub"><i
+                            class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/lokesh-ahire" target="_blank" class="social-icon"
+                        aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/_luckyyy.08/" target="_blank" class="social-icon"
+                        aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:lokeshahire85@gmail.com" class="social-icon" aria-label="Email"><i
+                            class="fa-solid fa-envelope"></i></a>
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-left">
                 <div class="profile-img-container mx-auto" style="max-width: 400px;">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lokesh Dipak Ahire - Web Developer" class="profile-img img-fluid shadow-lg">
+                    <img src="assets/image/Pic.jpg" alt="Lokesh Dipak Ahire - Web Developer"
+                        class="profile-img img-fluid shadow-lg">
+
                 </div>
             </div>
         </div>
@@ -70,35 +80,42 @@
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <h2 class="section-title">What I Do</h2>
-            <p class="text-muted max-w-2xl mx-auto">Providing high-quality digital solutions tailored to your business needs.</p>
+            <p class="text-muted max-w-2xl mx-auto">Providing high-quality digital solutions tailored to your business
+                needs.</p>
         </div>
-        
+
         <div class="row gy-4">
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
                 <div class="custom-card text-center h-100">
-                    <div class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; border-radius: 20px; background: rgba(99, 102, 241, 0.1); color: var(--primary-color); font-size: 2rem;">
+                    <div class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center"
+                        style="width: 70px; height: 70px; border-radius: 20px; background: rgba(99, 102, 241, 0.1); color: var(--primary-color); font-size: 2rem;">
                         <i class="fa-solid fa-laptop-code"></i>
                     </div>
                     <h4 class="font-outfit fw-bold mb-3">Frontend Dev</h4>
-                    <p class="text-muted">Creating responsive, interactive, and highly performant user interfaces using modern frameworks.</p>
+                    <p class="text-muted">Creating responsive, interactive, and highly performant user interfaces using
+                        modern frameworks.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="custom-card text-center h-100">
-                    <div class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; border-radius: 20px; background: rgba(236, 72, 153, 0.1); color: var(--accent-color); font-size: 2rem;">
+                    <div class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center"
+                        style="width: 70px; height: 70px; border-radius: 20px; background: rgba(236, 72, 153, 0.1); color: var(--accent-color); font-size: 2rem;">
                         <i class="fa-solid fa-server"></i>
                     </div>
                     <h4 class="font-outfit fw-bold mb-3">Backend PHP</h4>
-                    <p class="text-muted">Building robust, scalable, and secure server-side applications and APIs with PHP and MySQL.</p>
+                    <p class="text-muted">Building robust, scalable, and secure server-side applications and APIs with
+                        PHP and MySQL.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="custom-card text-center h-100">
-                    <div class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; border-radius: 20px; background: rgba(139, 92, 246, 0.1); color: var(--secondary-color); font-size: 2rem;">
+                    <div class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center"
+                        style="width: 70px; height: 70px; border-radius: 20px; background: rgba(139, 92, 246, 0.1); color: var(--secondary-color); font-size: 2rem;">
                         <i class="fa-solid fa-mobile-screen"></i>
                     </div>
                     <h4 class="font-outfit fw-bold mb-3">Responsive Design</h4>
-                    <p class="text-muted">Ensuring your application looks and works perfectly across all devices and screen sizes.</p>
+                    <p class="text-muted">Ensuring your application looks and works perfectly across all devices and
+                        screen sizes.</p>
                 </div>
             </div>
         </div>
@@ -108,10 +125,12 @@
 <!-- CTA Section -->
 <section class="py-5 mb-5 position-relative">
     <div class="container" data-aos="zoom-in">
-        <div class="custom-card border-0 text-center text-white" style="background: var(--gradient-1); border-radius: 2rem; padding: 4rem 2rem;">
+        <div class="custom-card border-0 text-center text-white"
+            style="background: var(--gradient-1); border-radius: 2rem; padding: 4rem 2rem;">
             <h2 class="font-outfit fw-bold mb-3">Ready to start your next project?</h2>
             <p class="lead mb-4 opacity-75">Let's work together to bring your ideas to life.</p>
-            <a href="contact.php" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-primary shadow">Get In Touch</a>
+            <a href="contact.php" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-primary shadow">Get In
+                Touch</a>
         </div>
     </div>
 </section>
