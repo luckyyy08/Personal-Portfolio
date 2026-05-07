@@ -40,10 +40,10 @@
                             <span class="badge bg-body-secondary text-body border">Bootstrap 5</span>
                         </div>
                         <div class="d-flex gap-2 mt-auto">
-                            <a href="http://localhost/CakeCraft/index.php"
+                            <a href="https://cake-craft-alpha.vercel.app/demo.html" target="_blank"
                                 class="btn btn-sm btn-outline-theme flex-grow-1"><i class="fa-solid fa-link me-1"></i>
                                 Live Demo</a>
-                            <a href="#" class="btn btn-sm btn-dark flex-grow-1"><i class="fa-brands fa-github me-1"></i>
+                            <a href="https://github.com/luckyyy08/CakeCraft.git" target="_blank" class="btn btn-sm btn-dark flex-grow-1"><i class="fa-brands fa-github me-1"></i>
                                 Code</a>
                         </div>
                     </div>
