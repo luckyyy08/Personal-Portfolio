@@ -82,7 +82,37 @@
         </div>
 
         <div class="row gy-4">
-            <!-- Project 1 -->
+            <!-- Project: CleanBox AI -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
+                    <div class="position-relative overflow-hidden group">
+                        <img src="assets/image/cleanbox.png" alt="CleanBox AI"
+                            class="img-fluid w-100 object-fit-cover" style="height: 200px; transition: transform 0.5s;">
+                        <div class="position-absolute top-0 end-0 p-3">
+                            <span class="badge bg-gradient-primary rounded-pill">Featured</span>
+                        </div>
+                    </div>
+                    <div class="p-4 d-flex flex-column flex-grow-1">
+                        <h4 class="font-outfit fw-bold mb-2">CleanBox AI</h4>
+                        <p class="text-muted mb-4 flex-grow-1">Intelligent Email Management system that uses AI to scan and declutter your Gmail inbox safely and efficiently.</p>
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge bg-body-secondary text-body border">PHP OOP</span>
+                            <span class="badge bg-body-secondary text-body border">Gmail API</span>
+                            <span class="badge bg-body-secondary text-body border">Chart.js</span>
+                        </div>
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-sm btn-outline-theme flex-grow-1" data-bs-toggle="modal" data-bs-target="#cleanboxModal">
+                                <i class="fa-solid fa-circle-info me-1"></i> Details
+                            </button>
+                            <a href="https://email-cleaner-flame.vercel.app/" target="_blank"
+                                class="btn btn-sm btn-gradient flex-grow-1"><i class="fa-solid fa-link me-1"></i>
+                                Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 1: CakeCraft -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
                     <div class="position-relative overflow-hidden group">
@@ -102,17 +132,18 @@
                             <span class="badge bg-body-secondary text-body border">Bootstrap 5</span>
                         </div>
                         <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-sm btn-outline-theme flex-grow-1" data-bs-toggle="modal" data-bs-target="#cakecraftModal">
+                                <i class="fa-solid fa-circle-info me-1"></i> Details
+                            </button>
                             <a href="https://cake-craft-alpha.vercel.app/demo.html" target="_blank"
-                                class="btn btn-sm btn-outline-theme flex-grow-1"><i class="fa-solid fa-link me-1"></i>
-                                Live Demo</a>
-                            <a href="https://github.com/luckyyy08/CakeCraft.git" target="_blank" class="btn btn-sm btn-dark flex-grow-1"><i class="fa-brands fa-github me-1"></i>
-                                Code</a>
+                                class="btn btn-sm btn-gradient flex-grow-1"><i class="fa-solid fa-link me-1"></i>
+                                Demo</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 2 -->
+            <!-- Project 2: Weather Dashboard -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
                     <div class="position-relative overflow-hidden">
@@ -132,16 +163,17 @@
                             <span class="badge bg-body-secondary text-body border">CSS3</span>
                         </div>
                         <div class="d-flex gap-2 mt-auto">
-                            <a href="#" class="btn btn-sm btn-outline-theme flex-grow-1"><i
-                                    class="fa-solid fa-link me-1"></i> Live Demo</a>
-                            <a href="#" class="btn btn-sm btn-dark flex-grow-1"><i class="fa-brands fa-github me-1"></i>
-                                Code</a>
+                            <button class="btn btn-sm btn-outline-theme flex-grow-1" data-bs-toggle="modal" data-bs-target="#weatherModal">
+                                <i class="fa-solid fa-circle-info me-1"></i> Details
+                            </button>
+                            <a href="#" class="btn btn-sm btn-gradient flex-grow-1"><i
+                                    class="fa-solid fa-link me-1"></i> Demo</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 3 -->
+            <!-- Project 3: Blog CMS -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
                     <div class="position-relative overflow-hidden">
@@ -161,10 +193,11 @@
                             <span class="badge bg-body-secondary text-body border">Tailwind</span>
                         </div>
                         <div class="d-flex gap-2 mt-auto">
-                            <a href="#" class="btn btn-sm btn-outline-theme flex-grow-1"><i
-                                    class="fa-solid fa-link me-1"></i> Live Demo</a>
-                            <a href="#" class="btn btn-sm btn-dark flex-grow-1"><i class="fa-brands fa-github me-1"></i>
-                                Code</a>
+                            <button class="btn btn-sm btn-outline-theme flex-grow-1" data-bs-toggle="modal" data-bs-target="#blogModal">
+                                <i class="fa-solid fa-circle-info me-1"></i> Details
+                            </button>
+                            <a href="#" class="btn btn-sm btn-gradient flex-grow-1"><i
+                                    class="fa-solid fa-link me-1"></i> Demo</a>
                         </div>
                     </div>
                 </div>
@@ -173,7 +206,199 @@
     </div>
 </section>
 
+    <!-- Project Modals -->
+    <div class="modal fade" id="cleanboxModal" tabindex="-1" aria-labelledby="cleanboxModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content custom-card p-0 border-0">
+                <div class="modal-header border-bottom border-secondary border-opacity-10 p-4">
+                    <h5 class="modal-title font-outfit fw-bold" id="cleanboxModalLabel">CleanBox AI - Project Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row gy-4">
+                        <div class="col-md-5">
+                            <img src="assets/image/cleanbox.png" alt="CleanBox AI" class="img-fluid rounded-3 mb-3 border">
+                            <h6 class="fw-bold mb-3"><i class="fa-solid fa-layer-group text-primary me-2"></i>Technology Stack</h6>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-body-secondary text-body border">PHP OOP</span>
+                                <span class="badge bg-body-secondary text-body border">MySQL</span>
+                                <span class="badge bg-body-secondary text-body border">Google OAuth 2.0</span>
+                                <span class="badge bg-body-secondary text-body border">Gmail API</span>
+                                <span class="badge bg-body-secondary text-body border">Chart.js</span>
+                                <span class="badge bg-body-secondary text-body border">Bootstrap 5</span>
+                                <span class="badge bg-body-secondary text-body border">AOS</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <a href="https://email-cleaner-flame.vercel.app/" target="_blank" class="btn btn-gradient">
+                                    <i class="fa-solid fa-rocket me-2"></i>Live Demo
+                                </a>
+                                <a href="https://github.com/luckyyy08/EmailCleaner.git" target="_blank" class="btn btn-outline-theme">
+                                    <i class="fa-brands fa-github me-2"></i>Source Code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h6 class="fw-bold mb-2 text-gradient">Project Overview</h6>
+                            <p class="text-muted small">CleanBox AI is a sophisticated email management tool designed to help users reclaim their inbox and digital storage. Built with PHP and integrated with the Google Gmail API, it provides an intelligent dashboard to scan, categorize, and bulk-delete unnecessary promotional content and expired verification codes.</p>
+                            
+                            <h6 class="fw-bold mb-2 text-gradient mt-4">Key Features</h6>
+                            <ul class="text-muted small ps-3">
+                                <li class="mb-1"><strong>AI-Powered Scanning:</strong> Accurate identification of unnecessary emails using keyword analysis.</li>
+                                <li class="mb-1"><strong>Bulk Cleanup:</strong> Safely delete hundreds of emails simultaneously.</li>
+                                <li class="mb-1"><strong>Real-Time Analytics:</strong> Visual reports (Chart.js) showing storage space recovered.</li>
+                                <li class="mb-1"><strong>Smart OTP Cleanup:</strong> Advanced logic to find and remove expired verification codes.</li>
+                                <li class="mb-1"><strong>Secure Login:</strong> Integrated with official Google OAuth system for privacy.</li>
+                                <li class="mb-1"><strong>SPA Experience:</strong> Modern, seamless UI with persistent sidebar and navbar.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CakeCraft Modal -->
+    <div class="modal fade" id="cakecraftModal" tabindex="-1" aria-labelledby="cakecraftModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content custom-card p-0 border-0">
+                <div class="modal-header border-bottom border-secondary border-opacity-10 p-4">
+                    <h5 class="modal-title font-outfit fw-bold" id="cakecraftModalLabel">CakeCraft E-commerce - Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row gy-4">
+                        <div class="col-md-5">
+                            <img src="assets/image/cakecraft.png" alt="CakeCraft" class="img-fluid rounded-3 mb-3 border">
+                            <h6 class="fw-bold mb-3"><i class="fa-solid fa-layer-group text-primary me-2"></i>Technology Stack</h6>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-body-secondary text-body border">PHP</span>
+                                <span class="badge bg-body-secondary text-body border">MySQL</span>
+                                <span class="badge bg-body-secondary text-body border">Bootstrap 5</span>
+                                <span class="badge bg-body-secondary text-body border">JavaScript</span>
+                                <span class="badge bg-body-secondary text-body border">Font Awesome</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <a href="https://cake-craft-alpha.vercel.app/demo.html" target="_blank" class="btn btn-gradient">
+                                    <i class="fa-solid fa-rocket me-2"></i>Live Demo
+                                </a>
+                                <a href="https://github.com/luckyyy08/CakeCraft.git" target="_blank" class="btn btn-outline-theme">
+                                    <i class="fa-brands fa-github me-2"></i>Source Code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h6 class="fw-bold mb-2 text-gradient">Project Overview</h6>
+                            <p class="text-muted small">CakeCraft is a comprehensive e-commerce solution for bakeries, featuring a dynamic product catalog, shopping cart system, and an interactive admin dashboard for order tracking and inventory management.</p>
+                            
+                            <h6 class="fw-bold mb-2 text-gradient mt-4">Key Features</h6>
+                            <ul class="text-muted small ps-3">
+                                <li class="mb-1"><strong>Product Catalog:</strong> Dynamic display of products with categorization and search.</li>
+                                <li class="mb-1"><strong>Cart System:</strong> Seamless add-to-cart and management functionality.</li>
+                                <li class="mb-1"><strong>Admin Dashboard:</strong> Powerful backend to manage orders, products, and users.</li>
+                                <li class="mb-1"><strong>Secure Auth:</strong> User registration and login with session management.</li>
+                                <li class="mb-1"><strong>Responsive Design:</strong> Fully optimized for mobile, tablet, and desktop views.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weather Dashboard Modal -->
+    <div class="modal fade" id="weatherModal" tabindex="-1" aria-labelledby="weatherModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content custom-card p-0 border-0">
+                <div class="modal-header border-bottom border-secondary border-opacity-10 p-4">
+                    <h5 class="modal-title font-outfit fw-bold" id="weatherModalLabel">Weather Dashboard - Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row gy-4">
+                        <div class="col-md-5">
+                            <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Weather App" class="img-fluid rounded-3 mb-3 border">
+                            <h6 class="fw-bold mb-3"><i class="fa-solid fa-layer-group text-primary me-2"></i>Technology Stack</h6>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-body-secondary text-body border">JavaScript (ES6+)</span>
+                                <span class="badge bg-body-secondary text-body border">OpenWeather API</span>
+                                <span class="badge bg-body-secondary text-body border">CSS3</span>
+                                <span class="badge bg-body-secondary text-body border">HTML5</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <a href="#" target="_blank" class="btn btn-gradient">
+                                    <i class="fa-solid fa-rocket me-2"></i>Live Demo
+                                </a>
+                                <a href="#" target="_blank" class="btn btn-outline-theme">
+                                    <i class="fa-brands fa-github me-2"></i>Source Code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h6 class="fw-bold mb-2 text-gradient">Project Overview</h6>
+                            <p class="text-muted small">A real-time weather tracking application that provides accurate weather data and forecasts globally. It features a clean, responsive interface with dynamic background changes based on weather conditions.</p>
+                            
+                            <h6 class="fw-bold mb-2 text-gradient mt-4">Key Features</h6>
+                            <ul class="text-muted small ps-3">
+                                <li class="mb-1"><strong>Real-time Data:</strong> Accurate current weather conditions using external APIs.</li>
+                                <li class="mb-1"><strong>5-Day Forecast:</strong> Extended weather predictions for better planning.</li>
+                                <li class="mb-1"><strong>Location Search:</strong> Search weather for any city worldwide.</li>
+                                <li class="mb-1"><strong>Dynamic Backgrounds:</strong> UI changes based on weather (Sunny, Rainy, Snowy, etc.).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog CMS Modal -->
+    <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content custom-card p-0 border-0">
+                <div class="modal-header border-bottom border-secondary border-opacity-10 p-4">
+                    <h5 class="modal-title font-outfit fw-bold" id="blogModalLabel">Dynamic Blog CMS - Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row gy-4">
+                        <div class="col-md-5">
+                            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Blog System" class="img-fluid rounded-3 mb-3 border">
+                            <h6 class="fw-bold mb-3"><i class="fa-solid fa-layer-group text-primary me-2"></i>Technology Stack</h6>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-body-secondary text-body border">PHP OOP</span>
+                                <span class="badge bg-body-secondary text-body border">MySQL</span>
+                                <span class="badge bg-body-secondary text-body border">Tailwind CSS</span>
+                                <span class="badge bg-body-secondary text-body border">JavaScript</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <a href="#" target="_blank" class="btn btn-gradient">
+                                    <i class="fa-solid fa-rocket me-2"></i>Live Demo
+                                </a>
+                                <a href="#" target="_blank" class="btn btn-outline-theme">
+                                    <i class="fa-brands fa-github me-2"></i>Source Code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h6 class="fw-bold mb-2 text-gradient">Project Overview</h6>
+                            <p class="text-muted small">A robust Content Management System designed for bloggers. It allows users to create, edit, and manage blog posts with a markdown-supported editor and a structured database for categories and tags.</p>
+                            
+                            <h6 class="fw-bold mb-2 text-gradient mt-4">Key Features</h6>
+                            <ul class="text-muted small ps-3">
+                                <li class="mb-1"><strong>CRUD Operations:</strong> Full control over creating, reading, updating, and deleting posts.</li>
+                                <li class="mb-1"><strong>User Authentication:</strong> Secure login system for authors and admins.</li>
+                                <li class="mb-1"><strong>Category Management:</strong> Organize posts into logical categories and tags.</li>
+                                <li class="mb-1"><strong>SEO Optimization:</strong> Clean URLs and meta tag management.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
+
     <footer class="footer py-5 mt-5 border-top">
         <div class="container">
             <div class="row gy-4">

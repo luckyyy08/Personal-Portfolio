@@ -63,6 +63,11 @@ body {
     box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
+.bg-gradient-primary {
+    background: var(--gradient-1);
+    color: white;
+}
+
 .btn-outline-theme {
     color: var(--primary-color);
     border-color: var(--primary-color);
