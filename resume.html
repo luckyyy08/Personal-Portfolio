@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokesh Ahire - Resume</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: var(--bg-light);
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .no-print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .no-print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+        }
+
+        header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .summary p {
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        .education-item, .project-item {
+            margin-bottom: 20px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .item-subtitle {
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .item-date {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .item-description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .skill-list {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        ul.achievements {
+            margin: 5px 0 0 18px;
+            padding: 0;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        @media print {
+            .no-print-btn {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+            .resume-container {
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .resume-container {
+                margin: 0;
+                padding: 20px;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .item-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="no-print-btn" onclick="window.print()">
+        <i class="fa-solid fa-download"></i> Download as PDF
+    </button>
+
+    <div class="resume-container">
+        <header>
+            <h1>Lokesh Dipak Ahire</h1>
+            <div class="contact-info">
+                <span><i class="fa-solid fa-envelope"></i> <a href="mailto:lokeshahire85@gmail.com">lokeshahire85@gmail.com</a></span>
+                <span><i class="fa-solid fa-phone"></i> +91 9579329098</span>
+                <span><i class="fa-solid fa-location-dot"></i> Nashik, India</span>
+                <span><i class="fa-brands fa-linkedin"></i> <a href="https://linkedin.com/in/lokesh-ahire" target="_blank">linkedin.com/in/lokesh-ahire</a></span>
+                <span><i class="fa-brands fa-github"></i> <a href="https://github.com/luckyyy08" target="_blank">github.com/luckyyy08</a></span>
+            </div>
+        </header>
+
+        <section class="summary">
+            <h2>Professional Summary</h2>
+            <p>Passionate Full Stack Web Developer with a BSc in Computer Science. Proficient in PHP (OOP), MySQL, and modern JavaScript frameworks. Experienced in building high-fidelity web applications with a focus on UI/UX excellence, secure API integration, and interactive data visualization. Seeking a challenging role to leverage my technical skills and contribute to innovative digital solutions.</p>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="item-header">
+                    <span class="item-title">BSc Computer Science</span>
+                    <span class="item-date">2023 – 2026</span>
+                </div>
+                <div class="item-subtitle">KTHM College, Nashik (SPPU)</div>
+                <div class="item-description">Gained strong foundation in Data Structures, Database Management, and Web Technologies. Recently completed Third Year (Results Awaiting).</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-list">HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, Tailwind CSS, AOS, Chart.js</div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend & Database</h3>
+                    <div class="skill-list">PHP (OOP), MySQL, Google OAuth 2.0, Gmail API, OMDB API, Open-Meteo API</div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Others</h3>
+                    <div class="skill-list">Git, GitHub, Vercel Deployment, LocalStorage, Web Speech API</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Key Projects</h2>
+            
+            <div class="project-item">
+                <div class="item-header">
+                    <span class="item-title">CleanBox AI - Email Management System</span>
+                    <span class="item-date"><a href="https://email-cleaner-flame.vercel.app/" target="_blank">Live Demo</a></span>
+                </div>
+                <div class="item-subtitle">PHP, MySQL, Gmail API, Google OAuth</div>
+                <ul class="achievements">
+                    <li>Developed an intelligent inbox decluttering system using Google Gmail API.</li>
+                    <li>Implemented bulk cleanup logic to safely delete promotional and expired OTP emails.</li>
+                    <li>Designed a premium dashboard with real-time space recovery analytics using Chart.js.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <span class="item-title">SkyCast - Premium Weather Dashboard</span>
+                    <span class="item-date"><a href="https://sky-cast-hazel.vercel.app/" target="_blank">Live Demo</a></span>
+                </div>
+                <div class="item-subtitle">JavaScript ES6, Open-Meteo API, Bootstrap 5</div>
+                <ul class="achievements">
+                    <li>Built a high-fidelity weather dashboard with Glassmorphism UI and dynamic real-time backgrounds.</li>
+                    <li>Integrated Voice Search and smart autocomplete for global city tracking.</li>
+                    <li>Visualized 24-hour forecasts using interactive trend graphs.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <span class="item-title">CineWave - Movie Discovery Platform</span>
+                    <span class="item-date"><a href="https://cine-wave-pi.vercel.app/" target="_blank">Live Demo</a></span>
+                </div>
+                <div class="item-subtitle">JavaScript, OMDB API, LocalStorage</div>
+                <ul class="achievements">
+                    <li>Developed a Netflix-inspired movie discovery app with real-time search and filtering.</li>
+                    <li>Implemented a persistent watchlist feature using browser LocalStorage.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <span class="item-title">CakeCraft - E-commerce Bakery</span>
+                    <span class="item-date"><a href="https://cake-craft-alpha.vercel.app/demo.html" target="_blank">Live Demo</a></span>
+                </div>
+                <div class="item-subtitle">PHP, MySQL, Bootstrap 5</div>
+                <ul class="achievements">
+                    <li>Created a full-stack e-commerce platform with product management and secure checkout.</li>
+                    <li>Built an interactive admin dashboard for order and inventory tracking.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Certifications</h2>
+            <div class="project-item">
+                <div class="item-header">
+                    <span class="item-title">Full Stack Web Development</span>
+                    <span class="item-date">Udemy</span>
+                </div>
+                <div class="item-header">
+                    <span class="item-title">PHP & MySQL Developer Course</span>
+                    <span class="item-date">Udemy</span>
+                </div>
+                <div class="item-header">
+                    <span class="item-title">Frontend Design Principles</span>
+                    <span class="item-date">Online Platform</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
