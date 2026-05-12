@@ -82,6 +82,39 @@
         </div>
 
         <div class="row gy-4">
+            <!-- Project: CineWave Movie Search -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
+                    <div class="position-relative overflow-hidden group border-bottom border-secondary border-opacity-10">
+                        <img src="assets/image/cinewave.png" alt="CineWave Movie Search"
+                            class="img-fluid w-100 object-fit-cover" style="height: 200px; transition: transform 0.5s;">
+                        <div class="position-absolute top-0 end-0 p-3">
+                            <span class="badge bg-danger rounded-pill"><i class="fa-solid fa-fire me-1"></i> New</span>
+                        </div>
+                    </div>
+                    <div class="p-4 d-flex flex-column flex-grow-1">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="font-outfit fw-bold mb-0">CineWave</h4>
+                            <span class="badge bg-body-secondary text-danger border border-danger border-opacity-25">Premium UI</span>
+                        </div>
+                        <p class="text-muted mb-4 flex-grow-1">A high-fidelity, Netflix-inspired movie discovery platform featuring real-time API integration and a personal watchlist.</p>
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge bg-body-secondary text-body border">JavaScript</span>
+                            <span class="badge bg-body-secondary text-body border">OMDB API</span>
+                            <span class="badge bg-body-secondary text-body border">Bootstrap 5</span>
+                        </div>
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-sm btn-outline-theme flex-grow-1" data-bs-toggle="modal" data-bs-target="#cinewaveModal">
+                                <i class="fa-solid fa-circle-info me-1"></i> Details
+                            </button>
+                            <a href="https://cine-wave-pi.vercel.app/" target="_blank"
+                                class="btn btn-sm btn-gradient flex-grow-1"><i class="fa-solid fa-link me-1"></i>
+                                Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Project: CleanBox AI -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
@@ -143,31 +176,31 @@
                 </div>
             </div>
 
-            <!-- Project 2: Weather Dashboard -->
+            <!-- Project 2: SkyCast Weather Dashboard -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
                     <div class="position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Weather App" class="img-fluid w-100 object-fit-cover" style="height: 200px;">
+                        <img src="assets/image/skycast.png" alt="SkyCast Weather Dashboard"
+                            class="img-fluid w-100 object-fit-cover" style="height: 200px; transition: transform 0.5s;">
                         <div class="position-absolute top-0 end-0 p-3">
-                            <span class="badge bg-info bg-opacity-90 rounded-pill">Frontend</span>
+                            <span class="badge bg-info rounded-pill"><i class="fa-solid fa-cloud-sun me-1"></i> Premium</span>
                         </div>
                     </div>
                     <div class="p-4 d-flex flex-column flex-grow-1">
-                        <h4 class="font-outfit fw-bold mb-2">Weather Dashboard</h4>
-                        <p class="text-muted mb-4 flex-grow-1">A responsive weather application utilizing OpenWeather
-                            API to display current conditions and 5-day forecasts.</p>
+                        <h4 class="font-outfit fw-bold mb-2">SkyCast Dashboard</h4>
+                        <p class="text-muted mb-4 flex-grow-1">A high-fidelity weather dashboard featuring glassmorphism UI, interactive Chart.js visualizations, and dynamic real-time backgrounds.</p>
                         <div class="d-flex flex-wrap gap-2 mb-4">
                             <span class="badge bg-body-secondary text-body border">JavaScript</span>
-                            <span class="badge bg-body-secondary text-body border">API</span>
-                            <span class="badge bg-body-secondary text-body border">CSS3</span>
+                            <span class="badge bg-body-secondary text-body border">Open-Meteo</span>
+                            <span class="badge bg-body-secondary text-body border">Chart.js</span>
                         </div>
                         <div class="d-flex gap-2 mt-auto">
-                            <button class="btn btn-sm btn-outline-theme flex-grow-1" data-bs-toggle="modal" data-bs-target="#weatherModal">
+                            <button class="btn btn-sm btn-outline-theme flex-grow-1" data-bs-toggle="modal" data-bs-target="#skycastModal">
                                 <i class="fa-solid fa-circle-info me-1"></i> Details
                             </button>
-                            <a href="#" class="btn btn-sm btn-gradient flex-grow-1"><i
-                                    class="fa-solid fa-link me-1"></i> Demo</a>
+                            <a href="https://sky-cast-hazel.vercel.app/" target="_blank" class="btn btn-sm btn-gradient flex-grow-1">
+                                <i class="fa-solid fa-link me-1"></i> Demo
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -305,44 +338,48 @@
         </div>
     </div>
 
-    <!-- Weather Dashboard Modal -->
-    <div class="modal fade" id="weatherModal" tabindex="-1" aria-labelledby="weatherModalLabel" aria-hidden="true">
+    <!-- SkyCast Modal -->
+    <div class="modal fade" id="skycastModal" tabindex="-1" aria-labelledby="skycastModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content custom-card p-0 border-0">
                 <div class="modal-header border-bottom border-secondary border-opacity-10 p-4">
-                    <h5 class="modal-title font-outfit fw-bold" id="weatherModalLabel">Weather Dashboard - Details</h5>
+                    <h5 class="modal-title font-outfit fw-bold" id="skycastModalLabel">SkyCast Weather Dashboard - Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
                     <div class="row gy-4">
                         <div class="col-md-5">
-                            <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Weather App" class="img-fluid rounded-3 mb-3 border">
+                            <img src="assets/image/skycast.png" alt="SkyCast Dashboard" class="img-fluid rounded-3 mb-3 border">
                             <h6 class="fw-bold mb-3"><i class="fa-solid fa-layer-group text-primary me-2"></i>Technology Stack</h6>
                             <div class="d-flex flex-wrap gap-2 mb-4">
                                 <span class="badge bg-body-secondary text-body border">JavaScript (ES6+)</span>
-                                <span class="badge bg-body-secondary text-body border">OpenWeather API</span>
-                                <span class="badge bg-body-secondary text-body border">CSS3</span>
-                                <span class="badge bg-body-secondary text-body border">HTML5</span>
+                                <span class="badge bg-body-secondary text-body border">Open-Meteo API</span>
+                                <span class="badge bg-body-secondary text-body border">Chart.js</span>
+                                <span class="badge bg-body-secondary text-body border">Bootstrap 5</span>
+                                <span class="badge bg-body-secondary text-body border">Glassmorphism UI</span>
+                                <span class="badge bg-body-secondary text-body border">Web Speech API</span>
                             </div>
                             <div class="d-grid gap-2">
-                                <a href="#" target="_blank" class="btn btn-gradient">
+                                <a href="https://sky-cast-hazel.vercel.app/" target="_blank" class="btn btn-gradient">
                                     <i class="fa-solid fa-rocket me-2"></i>Live Demo
                                 </a>
-                                <a href="#" target="_blank" class="btn btn-outline-theme">
+                                <a href="https://github.com/luckyyy08/SkyCast.git" target="_blank" class="btn btn-outline-theme">
                                     <i class="fa-brands fa-github me-2"></i>Source Code
                                 </a>
                             </div>
                         </div>
                         <div class="col-md-7">
                             <h6 class="fw-bold mb-2 text-gradient">Project Overview</h6>
-                            <p class="text-muted small">A real-time weather tracking application that provides accurate weather data and forecasts globally. It features a clean, responsive interface with dynamic background changes based on weather conditions.</p>
+                            <p class="text-muted small">SkyCast is a high-fidelity, production-grade weather dashboard designed to provide a premium user experience. It focuses on visual excellence and interactive data, featuring a sleek Glassmorphism UI and dynamic backgrounds that change in real-time based on weather conditions.</p>
                             
                             <h6 class="fw-bold mb-2 text-gradient mt-4">Key Features</h6>
                             <ul class="text-muted small ps-3">
-                                <li class="mb-1"><strong>Real-time Data:</strong> Accurate current weather conditions using external APIs.</li>
-                                <li class="mb-1"><strong>5-Day Forecast:</strong> Extended weather predictions for better planning.</li>
-                                <li class="mb-1"><strong>Location Search:</strong> Search weather for any city worldwide.</li>
-                                <li class="mb-1"><strong>Dynamic Backgrounds:</strong> UI changes based on weather (Sunny, Rainy, Snowy, etc.).</li>
+                                <li class="mb-1"><strong>Glassmorphism UI:</strong> Modern design using blur filters and semi-transparent overlays.</li>
+                                <li class="mb-1"><strong>Interactive Data:</strong> Custom temperature trend graphs using Chart.js with 24-hour forecasts.</li>
+                                <li class="mb-1"><strong>Dynamic Backgrounds:</strong> Logic system that switches UI themes based on weather states (Sunny, Rainy, etc.).</li>
+                                <li class="mb-1"><strong>Voice Search:</strong> Integrated Web Speech API for hands-free weather updates.</li>
+                                <li class="mb-1"><strong>Intelligent Search:</strong> Real-time city search with smart autocomplete powered by Geocoding API.</li>
+                                <li class="mb-1"><strong>Theme & Unit Toggle:</strong> Light/Dark modes and Celsius/Fahrenheit preferences saved locally.</li>
                             </ul>
                         </div>
                     </div>
@@ -397,6 +434,55 @@
         </div>
     </div>
 
+    <!-- CineWave Modal -->
+    <div class="modal fade" id="cinewaveModal" tabindex="-1" aria-labelledby="cinewaveModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content custom-card p-0 border-0">
+                <div class="modal-header border-bottom border-secondary border-opacity-10 p-4">
+                    <h5 class="modal-title font-outfit fw-bold" id="cinewaveModalLabel">CineWave | Movie Search - Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row gy-4">
+                        <div class="col-md-5">
+                            <img src="assets/image/cinewave.png" alt="CineWave" class="img-fluid rounded-3 mb-3 border">
+                            <h6 class="fw-bold mb-3"><i class="fa-solid fa-layer-group text-primary me-2"></i>Technology Stack</h6>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-body-secondary text-body border">HTML5 / CSS3</span>
+                                <span class="badge bg-body-secondary text-body border">JavaScript ES6</span>
+                                <span class="badge bg-body-secondary text-body border">Bootstrap 5</span>
+                                <span class="badge bg-body-secondary text-body border">OMDB API</span>
+                                <span class="badge bg-body-secondary text-body border">LocalStorage</span>
+                                <span class="badge bg-body-secondary text-body border">Font Awesome</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <a href="https://cine-wave-pi.vercel.app/" target="_blank" class="btn btn-gradient">
+                                    <i class="fa-solid fa-rocket me-2"></i>Live Demo
+                                </a>
+                                <a href="https://github.com/luckyyy08/CineWave-" target="_blank" class="btn btn-outline-theme">
+                                    <i class="fa-brands fa-github me-2"></i>Source Code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h6 class="fw-bold mb-2 text-gradient">Project Overview</h6>
+                            <p class="text-muted small">CineWave is a premium movie search application that bridges the gap between clean UI design and functional API integration. Inspired by the Netflix user experience, it allows users to explore a vast database of films, view detailed insights, and manage a personal watchlist—all within a seamless, responsive dark-themed environment.</p>
+                            
+                            <h6 class="fw-bold mb-2 text-gradient mt-4">Key Features</h6>
+                            <ul class="text-muted small ps-3">
+                                <li class="mb-1"><strong>Netflix Aesthetics:</strong> Dark mode, glassmorphism, and smooth hover animations for a premium feel.</li>
+                                <li class="mb-1"><strong>Real-time Search:</strong> Instant search suggestions and results using the OMDB API.</li>
+                                <li class="mb-1"><strong>Interactive Watchlist:</strong> Add/remove movies from your list with persistence via LocalStorage.</li>
+                                <li class="mb-1"><strong>Detailed Overlays:</strong> High-fidelity modals showing ratings, cast, plot, and runtime.</li>
+                                <li class="mb-1"><strong>Responsive Grid:</strong> Perfectly optimized for mobile and desktop viewing.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
 
     <footer class="footer py-5 mt-5 border-top">
@@ -435,7 +521,7 @@
                 </div>
             </div>
             <div class="text-center text-muted mt-5 pt-4 border-top">
-                <p class="mb-0">&copy;  DevPortfolio. All Rights Reserved.</p>
+                <p class="mb-0">&copy; DevPortfolio. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
