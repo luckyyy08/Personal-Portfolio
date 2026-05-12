@@ -73,17 +73,17 @@
 <!-- Projects Grid -->
 <section class="py-5 mb-5">
     <div class="container">
-        <!-- Filter Options (Frontend visual only for demo) -->
+        <!-- Filter Options -->
         <div class="d-flex justify-content-center flex-wrap gap-2 mb-5" data-aos="fade-up">
-            <button class="btn btn-gradient rounded-pill px-4">All</button>
-            <button class="btn btn-outline-theme rounded-pill px-4">Full Stack</button>
-            <button class="btn btn-outline-theme rounded-pill px-4">Frontend</button>
-            <button class="btn btn-outline-theme rounded-pill px-4">PHP/MySQL</button>
+            <button class="btn btn-gradient rounded-pill px-4 filter-btn active" data-filter="all">All</button>
+            <button class="btn btn-outline-theme rounded-pill px-4 filter-btn" data-filter="full-stack">Full Stack</button>
+            <button class="btn btn-outline-theme rounded-pill px-4 filter-btn" data-filter="frontend">Frontend</button>
+            <button class="btn btn-outline-theme rounded-pill px-4 filter-btn" data-filter="php-mysql">PHP/MySQL</button>
         </div>
 
-        <div class="row gy-4">
+        <div class="row gy-4" id="projectGrid">
             <!-- Project: CineWave Movie Search -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+            <div class="col-lg-4 col-md-6 project-item" data-category="frontend" data-aos="fade-up" data-aos-delay="0">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
                     <div class="position-relative overflow-hidden group border-bottom border-secondary border-opacity-10">
                         <img src="assets/image/cinewave.png" alt="CineWave Movie Search"
@@ -116,7 +116,7 @@
             </div>
 
             <!-- Project: CleanBox AI -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+            <div class="col-lg-4 col-md-6 project-item" data-category="full-stack php-mysql" data-aos="fade-up" data-aos-delay="0">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
                     <div class="position-relative overflow-hidden group">
                         <img src="assets/image/cleanbox.png" alt="CleanBox AI"
@@ -146,7 +146,7 @@
             </div>
 
             <!-- Project 1: CakeCraft -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+            <div class="col-lg-4 col-md-6 project-item" data-category="full-stack php-mysql" data-aos="fade-up" data-aos-delay="0">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
                     <div class="position-relative overflow-hidden group">
                         <img src="assets/image/cakecraft.png" alt="CakeCraft Bakery"
@@ -177,7 +177,7 @@
             </div>
 
             <!-- Project 2: SkyCast Weather Dashboard -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-4 col-md-6 project-item" data-category="frontend" data-aos="fade-up" data-aos-delay="100">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
                     <div class="position-relative overflow-hidden">
                         <img src="assets/image/skycast.png" alt="SkyCast Weather Dashboard"
@@ -207,7 +207,7 @@
             </div>
 
             <!-- Project 3: Blog CMS -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-4 col-md-6 project-item" data-category="php-mysql" data-aos="fade-up" data-aos-delay="200">
                 <div class="custom-card p-0 overflow-hidden d-flex flex-column h-100">
                     <div class="position-relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -534,5 +534,40 @@
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
+
+    <!-- Project Filtering Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectItems = document.querySelectorAll('.project-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and add to clicked
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('btn-gradient', 'active');
+                        btn.classList.add('btn-outline-theme');
+                    });
+                    button.classList.remove('btn-outline-theme');
+                    button.classList.add('btn-gradient', 'active');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    projectItems.forEach(item => {
+                        const categories = item.getAttribute('data-category').split(' ');
+                        
+                        if (filterValue === 'all' || categories.includes(filterValue)) {
+                            item.style.display = 'block';
+                            // Re-trigger AOS animation
+                            item.classList.add('aos-animate');
+                        } else {
+                            item.style.display = 'none';
+                            item.classList.remove('aos-animate');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
