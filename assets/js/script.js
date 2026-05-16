@@ -52,10 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('shadow-sm');
+        if (window.scrollY > 20) {
+            navbar.classList.add('scrolled');
         } else {
-            navbar.classList.remove('shadow-sm');
+            navbar.classList.remove('scrolled');
         }
     });
     
