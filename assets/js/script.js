@@ -153,6 +153,22 @@ document.addEventListener('DOMContentLoaded', () => {
             radius: 120
         };
 
+        const hexToRgba = (hex, opacity) => {
+            hex = hex.replace('#', '').trim();
+            if (hex.length === 3) {
+                hex = hex.split('').map(char => char + char).join('');
+            }
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+            return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+        };
+
+        const getPrimaryColor = () => {
+            const raw = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+            return raw || '#6366f1';
+        };
+
         // Resize Canvas
         const resizeCanvas = () => {
             canvas.width = window.innerWidth;
@@ -206,9 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             draw() {
-                // Glow indicator under dark mode
                 const theme = document.documentElement.getAttribute('data-bs-theme');
-                ctx.fillStyle = theme === 'dark' ? 'rgba(99, 102, 241, 0.45)' : 'rgba(99, 102, 241, 0.25)';
+                const primaryColor = getPrimaryColor();
+                ctx.fillStyle = hexToRgba(primaryColor, theme === 'dark' ? 0.45 : 0.25);
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -228,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Connect Lines
         const connectParticles = () => {
             const theme = document.documentElement.getAttribute('data-bs-theme');
+            const primaryColor = getPrimaryColor();
             const maxDistance = 110;
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a + 1; b < particlesArray.length; b++) {
@@ -237,9 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (distance < maxDistance) {
                         let opacity = 1 - (distance / maxDistance);
-                        ctx.strokeStyle = theme === 'dark' 
-                            ? `rgba(139, 92, 246, ${opacity * 0.12})` 
-                            : `rgba(99, 102, 241, ${opacity * 0.08})`;
+                        ctx.strokeStyle = hexToRgba(primaryColor, theme === 'dark' ? opacity * 0.12 : opacity * 0.08);
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -255,9 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < mouse.radius) {
                         let opacity = 1 - (distance / mouse.radius);
-                        ctx.strokeStyle = theme === 'dark'
-                            ? `rgba(6, 182, 212, ${opacity * 0.15})`
-                            : `rgba(99, 102, 241, ${opacity * 0.1})`;
+                        ctx.strokeStyle = hexToRgba(primaryColor, theme === 'dark' ? opacity * 0.15 : opacity * 0.1);
                         ctx.lineWidth = 1.2;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -361,11 +374,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (trimmed === 'help') {
                 outputDiv.innerHTML = `Available commands:<br>
-  - <span class="text-info">about</span>    : Brief bio of Lokesh<br>
-  - <span class="text-info">skills</span>   : Technical skillset<br>
-  - <span class="text-info">projects</span> : Highlighted projects<br>
-  - <span class="text-info">contact</span>  : Connect coordinates<br>
-  - <span class="text-info">clear</span>    : Clear terminal logs`;
+  - <span class="text-info">about</span>         : Brief bio of Lokesh<br>
+  - <span class="text-info">skills</span>        : Technical skillset<br>
+  - <span class="text-info">projects</span>      : Highlighted projects<br>
+  - <span class="text-info">contact</span>       : Connect coordinates<br>
+  - <span class="text-info">theme &lt;color&gt;</span>  : Switch theme (cyan, rose, emerald, indigo)<br>
+  - <span class="text-info">matrix</span>        : Run digital matrix code rain<br>
+  - <span class="text-info">joke</span>          : Tell a developer joke<br>
+  - <span class="text-info">sudo access</span>   : Recruiter Easter Egg unlock<br>
+  - <span class="text-info">clear</span>         : Clear terminal logs`;
             } else if (trimmed === 'about') {
                 outputDiv.innerHTML = `BSc Computer Science graduate, Full Stack Web Developer. Specializes in building secure databases, clean UI interfaces, and API connections. Based in Nashik, IN.`;
             } else if (trimmed === 'skills') {
@@ -382,6 +399,99 @@ Developer Tools: Git, GitHub, XAMPP, Vercel, VS Code`;
 Phone   : +91 9579329098<br>
 GitHub  : github.com/luckyyy08<br>
 LinkedIn: linkedin.com/in/lokesh-ahire`;
+            } else if (trimmed === 'joke') {
+                const jokes = [
+                    "Why do programmers wear glasses? Because they can't C#!",
+                    "There are 10 types of people in this world: Those who understand binary, and those who don't.",
+                    "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
+                    "['hip', 'hip'] (hip hip array!)",
+                    "A SQL query goes into a bar, walks up to two tables and asks, 'Can I join you?'"
+                ];
+                outputDiv.innerHTML = jokes[Math.floor(Math.random() * jokes.length)];
+            } else if (trimmed === 'sudo access') {
+                outputDiv.className = 'hud-line success small mt-1 mb-2 font-monospace';
+                outputDiv.innerHTML = `[ACCESS GRANTED]<br>
+✨ Lokesh: "Thank you for hacking in! Let's build something awesome."<br>
+📞 Direct Call/WhatsApp: <span class="text-info">+91 9579329098</span><br>
+📧 Primary Email: <span class="text-info">lokeshahire85@gmail.com</span>`;
+            } else if (trimmed.startsWith('theme ')) {
+                const parts = trimmed.split(' ');
+                const themeColor = parts[1];
+                const validThemes = ['indigo', 'cyan', 'rose', 'emerald'];
+                if (validThemes.includes(themeColor)) {
+                    setAccent(themeColor);
+                    outputDiv.innerHTML = `Theme accent successfully updated to <span class="text-info">${themeColor}</span>!`;
+                } else {
+                    outputDiv.innerHTML = `Invalid theme color. Use: <span class="text-info">theme &lt;indigo/cyan/rose/emerald&gt;</span>`;
+                    outputDiv.className = 'hud-line text-danger small mt-1 mb-2';
+                }
+            } else if (trimmed === 'matrix') {
+                outputDiv.style.display = 'none'; // render canvas overlay
+                const hudConsole = document.querySelector('.hud-console');
+                if (hudConsole) {
+                    const matrixCanvas = document.createElement('canvas');
+                    matrixCanvas.style.position = 'absolute';
+                    matrixCanvas.style.top = '0';
+                    matrixCanvas.style.left = '0';
+                    matrixCanvas.style.width = '100%';
+                    matrixCanvas.style.height = '100%';
+                    matrixCanvas.style.zIndex = '5';
+                    matrixCanvas.style.background = '#000';
+                    hudConsole.style.position = 'relative';
+                    hudConsole.appendChild(matrixCanvas);
+
+                    const mCtx = matrixCanvas.getContext('2d');
+                    matrixCanvas.width = hudConsole.clientWidth;
+                    matrixCanvas.height = hudConsole.clientHeight;
+
+                    const katakana = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    const alphabet = katakana.split('');
+
+                    const fontSize = 12;
+                    const columns = matrixCanvas.width / fontSize;
+
+                    const rainDrops = [];
+                    for (let x = 0; x < columns; x++) {
+                        rainDrops[x] = 1;
+                    }
+
+                    let animationFrameId;
+                    const drawMatrix = () => {
+                        mCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                        mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+                        mCtx.fillStyle = '#0F0';
+                        mCtx.font = fontSize + 'px monospace';
+
+                        for (let i = 0; i < rainDrops.length; i++) {
+                            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+                            mCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                            if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                                rainDrops[i] = 0;
+                            }
+                            rainDrops[i]++;
+                        }
+                        animationFrameId = requestAnimationFrame(drawMatrix);
+                    };
+
+                    drawMatrix();
+
+                    const destroyMatrix = () => {
+                        cancelAnimationFrame(animationFrameId);
+                        matrixCanvas.style.transition = 'opacity 0.5s ease';
+                        matrixCanvas.style.opacity = '0';
+                        setTimeout(() => {
+                            matrixCanvas.remove();
+                            if (hudInput) hudInput.focus();
+                        }, 500);
+                    };
+
+                    matrixCanvas.addEventListener('click', destroyMatrix);
+                    setTimeout(destroyMatrix, 6000);
+
+                    outputDiv.innerHTML = `Matrix sequence completed.`;
+                }
             } else if (trimmed === 'clear') {
                 hudContainer.innerHTML = '';
                 return;
