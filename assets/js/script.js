@@ -172,7 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize particles
         const initParticles = () => {
             particlesArray = [];
-            const numberOfParticles = Math.min(80, Math.floor((canvas.width * canvas.height) / 18000));
+            const maxParticles = window.innerWidth < 768 ? 25 : 80;
+            const divisor = window.innerWidth < 768 ? 25000 : 18000;
+            const numberOfParticles = Math.min(maxParticles, Math.floor((canvas.width * canvas.height) / divisor));
             for (let i = 0; i < numberOfParticles; i++) {
                 particlesArray.push(new Particle());
             }

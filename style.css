@@ -924,3 +924,276 @@ h1, h2, h3, h4, h5, h6 {
 .bg-primary-soft {
     background: var(--primary-soft);
 }
+
+/* ==========================================================================
+   Responsive & Fluid Breakpoints
+   ========================================================================== */
+
+/* Tablet & Smaller Screens (Desktop/Mobile crossover) */
+@media (max-width: 991.98px) {
+    .glassmorphism {
+        padding: 0.9rem 0;
+    }
+
+    /* Mobile Glassmorphic Navbar Collapse Dropdown */
+    .navbar-collapse {
+        background: var(--bg-surface) !important;
+        backdrop-filter: var(--glass-blur) !important;
+        -webkit-backdrop-filter: var(--glass-blur) !important;
+        border: 1.5px solid var(--border-color) !important;
+        border-radius: 20px;
+        padding: 1.25rem;
+        margin-top: 0.75rem;
+        box-shadow: var(--shadow-card);
+        animation: slideDownCollapse 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .navbar-nav {
+        align-items: center !important;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        margin: 0.4rem 0 !important;
+        font-size: 1.05rem;
+        text-align: center;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .navbar-nav .nav-link::after {
+        bottom: 0px;
+    }
+
+    /* Responsive Typography */
+    .display-3 {
+        font-size: 3rem !important;
+        line-height: 1.2;
+    }
+
+    .display-4 {
+        font-size: 2.6rem !important;
+        line-height: 1.25;
+    }
+
+    .section-title {
+        font-size: 2.2rem !important;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Quick stats padding adaptation */
+    .custom-card {
+        padding: 1.8rem;
+    }
+}
+
+/* Phablets & Small Tablets */
+@media (max-width: 767.98px) {
+    .display-3 {
+        font-size: 2.4rem !important;
+    }
+
+    .display-4 {
+        font-size: 2.1rem !important;
+    }
+
+    .section-title {
+        font-size: 1.85rem !important;
+        margin-bottom: 2.2rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+
+    /* Adjust main sections */
+    .hero-section {
+        padding-top: 100px;
+        padding-bottom: 40px;
+        min-height: auto;
+    }
+
+    /* Profile scaling */
+    .profile-img-container {
+        max-width: 290px !important;
+        margin: 0 auto 1.5rem auto;
+    }
+
+    .profile-rings {
+        inset: -8px;
+    }
+
+    .profile-ring-outer {
+        inset: -8px;
+    }
+
+    /* Scale down floating badges */
+    .badge-floating {
+        font-size: 0.8rem !important;
+        padding: 0.6rem 1rem !important;
+        border-radius: 14px !important;
+    }
+
+    .bf-1 {
+        top: 12%;
+        left: -15px;
+    }
+
+    .bf-2 {
+        bottom: 18%;
+        right: -15px;
+    }
+
+    .bf-3 {
+        bottom: -8px;
+        left: 15%;
+    }
+
+    /* Timeline Adjustments */
+    .timeline {
+        padding-left: 1.8rem;
+    }
+
+    .timeline-dot {
+        left: -1.8rem;
+        width: 16px;
+        height: 16px;
+        border-width: 3px;
+    }
+
+    /* Footer structure alignment */
+    .footer {
+        text-align: center;
+    }
+
+    .footer-links a {
+        justify-content: center;
+    }
+
+    .footer .social-icons {
+        justify-content: center;
+    }
+}
+
+/* Extra Small Screens (Smartphones) */
+@media (max-width: 575.98px) {
+    .display-3 {
+        font-size: 2.1rem !important;
+    }
+
+    .display-4 {
+        font-size: 1.85rem !important;
+    }
+
+    .section-title {
+        font-size: 1.65rem !important;
+    }
+
+    .hero-section {
+        padding-top: 90px;
+        padding-bottom: 30px;
+    }
+
+    /* Reposition badges to stack below the photo nicely instead of floating over or causing horizontal overflow */
+    .profile-img-container {
+        max-width: 230px !important;
+        padding: 10px;
+    }
+
+    .profile-img {
+        display: block !important;
+        margin: 0 auto 1.5rem auto !important;
+    }
+
+    .profile-img-container .badge-floating {
+        position: relative !important;
+        display: inline-flex !important;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 0.6rem 0.3rem 0 0.3rem !important;
+        animation: none !important;
+        transform: none !important;
+        box-shadow: none !important;
+        z-index: 10;
+        vertical-align: middle;
+    }
+
+    /* Hide dashed Orbiting Rings to prevent mobile screen clutter */
+    .profile-rings {
+        display: none !important;
+    }
+
+    /* Card adjustments */
+    .custom-card {
+        padding: 1.5rem;
+        border-radius: 18px;
+    }
+
+    .btn-gradient, .btn-outline-theme {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-section .d-flex {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-section .social-icons {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}
+
+/* ==========================================================================
+   Smooth Fade Animations & Micro-Interactions
+   ========================================================================== */
+
+@keyframes slideDownCollapse {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CSS animation for project filtering in projects.html */
+@keyframes filterFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.project-item {
+    animation: filterFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Card Visual Improvements */
+.custom-card {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-card:hover {
+    transform: translateY(-8px) scale(1.01);
+}
+
+.social-icon {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background-color 0.3s ease, 
+                color 0.3s ease, 
+                box-shadow 0.4s ease;
+}
+
