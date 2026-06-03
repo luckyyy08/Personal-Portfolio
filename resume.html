@@ -3,28 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lokesh Ahire - Classic Resume</title>
+    <title>Lokesh Ahire - Professional Resume</title>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Outfit:wght@400;600;700&display=swap');
 
         body {
             font-family: 'Source Serif 4', serif;
-            line-height: 1.3;
+            line-height: 1.35;
             color: #000;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #0c101d;
+            background-image: radial-gradient(rgba(99, 102, 241, 0.05) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
         }
 
+        /* Top Action Bar */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 210mm;
+            margin: 20px auto 0 auto;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .action-btn:hover {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Printable Resume Page container */
         .resume-page {
             width: 210mm;
             min-height: 297mm;
-            margin: 20px auto;
+            margin: 20px auto 40px auto;
             background: #fff;
             padding: 15mm 20mm;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             box-sizing: border-box;
+            border-radius: 8px;
         }
 
         .header {
@@ -33,16 +74,19 @@
         }
 
         .name {
+            font-family: 'Libre Baskerville', serif;
             font-size: 28pt;
             font-weight: 700;
             text-transform: uppercase;
             margin-bottom: 5px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            color: #111;
         }
 
         .contact-info {
             font-size: 10pt;
             margin-bottom: 5px;
+            color: #333;
         }
 
         .links {
@@ -74,13 +118,15 @@
         }
 
         .section-title {
-            font-size: 12pt;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 11pt;
             font-weight: 700;
             text-transform: uppercase;
-            border-bottom: 1px solid #000;
-            margin-top: 15px;
+            border-bottom: 1.5px solid #000;
+            margin-top: 18px;
             margin-bottom: 8px;
             padding-bottom: 2px;
+            letter-spacing: 0.5px;
         }
 
         .entry {
@@ -127,42 +173,72 @@
 
         .skill-category {
             font-weight: 700;
-            width: 180px;
+            width: 150px;
         }
 
-        @media print {
+        /* Responsive styling for screen view */
+        @media screen and (max-width: 220mm) {
             body {
-                background: none;
+                background-color: #fff;
+                background-image: none;
             }
-            .resume-page {
+
+            .action-bar {
                 margin: 0;
-                box-shadow: none;
+                padding: 10px;
+                background-color: #0c101d;
+                max-width: 100%;
                 width: 100%;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                border-radius: 0;
             }
-            .no-print {
+
+            .resume-page {
+                width: 100%;
+                margin: 0;
+                padding: 10px 15px 30px 15px;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 5px 12px;
+            }
+
+            .links .separator {
                 display: none;
             }
         }
 
-        .no-print {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #2563eb;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-family: sans-serif;
-            border-radius: 5px;
-            z-index: 100;
-            font-weight: bold;
+        /* Clean styles for physical printing */
+        @media print {
+            body {
+                background: none !important;
+                background-image: none !important;
+                color: #000;
+            }
+            .action-bar {
+                display: none !important;
+            }
+            .resume-page {
+                margin: 0 !important;
+                box-shadow: none !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
         }
     </style>
 </head>
 <body>
 
-    <button class="no-print" onclick="window.print()">Download PDF</button>
+    <div class="action-bar">
+        <a href="index.html" class="action-btn"><i class="fa-solid fa-arrow-left"></i> Home Page</a>
+        <button class="action-btn" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> Download PDF / Print</button>
+    </div>
 
     <div class="resume-page">
         <div class="header">
@@ -191,8 +267,8 @@
                 <span>Bachelor of Science in Computer Science</span>
                 <span>Nashik, India</span>
             </div>
-            <div style="font-size: 10pt; margin-top: 5px;">
-                <strong>Relevant Coursework:</strong> Data Structures & Algorithms, Object-Oriented Programming (PHP/C++), Database Management Systems (MySQL), Web Technologies, Software Engineering.
+            <div style="font-size: 10pt; margin-top: 5px; text-align: justify;">
+                <strong>Relevant Coursework:</strong> Data Structures & Algorithms, Object-Oriented Programming (PHP/C++), Database Management Systems (MySQL), Web Technologies, Software Engineering, Discrete Mathematics.
             </div>
         </div>
 
@@ -233,45 +309,45 @@
         
         <div class="entry">
             <div class="entry-header">
-                <span>GramSetu Rural-Tech Platform | <span style="font-weight: normal; font-style: italic;">PHP, MySQL, JavaScript</span></span>
+                <span>GramSetu Rural-Tech Platform | <span style="font-weight: normal; font-style: italic;">PHP OOP, MySQL, JavaScript, Bootstrap 5</span></span>
                 <span>Jan 2026</span>
             </div>
             <ul class="bullet-list">
-                <li>Architected a "Super App" for rural governance with Milk Collection tracking, SOS services, and digital certificates.</li>
-                <li>Designed a unified dashboard for citizens and admins, optimizing for low-bandwidth rural environments.</li>
+                <li>Architected a "Super App" for rural governance with milk collection logs, SOS services, and online certificate request forms.</li>
+                <li>Designed unified dashboards for citizens and administrators, optimizing asset requests for low-bandwidth rural environments.</li>
             </ul>
         </div>
 
         <div class="entry">
             <div class="entry-header">
-                <span>CleanBox AI | <span style="font-weight: normal; font-style: italic;">PHP, MySQL, Gmail API, Google OAuth</span></span>
+                <span>CleanBox AI | <span style="font-weight: normal; font-style: italic;">PHP OOP, MySQL, Gmail API, Google OAuth</span></span>
                 <span>Mar 2026</span>
             </div>
             <ul class="bullet-list">
-                <li>Developed an inbox decluttering system using Gmail API to automate deletion of promotional and expired emails.</li>
-                <li>Implemented OAuth 2.0 for secure access and built a real-time space recovery dashboard using Chart.js.</li>
+                <li>Developed an inbox decluttering system using Gmail API parameters to automate deletion of promotional and expired emails.</li>
+                <li>Implemented OAuth 2.0 connection parameters for secure login tokens and built a space recovery dashboard via Chart.js.</li>
             </ul>
         </div>
 
         <div class="entry">
             <div class="entry-header">
-                <span>SkyCast Weather Dashboard | <span style="font-weight: normal; font-style: italic;">JS ES6, Open-Meteo API, Bootstrap 5</span></span>
+                <span>SkyCast Weather Dashboard | <span style="font-weight: normal; font-style: italic;">JS ES6, Open-Meteo API, Chart.js, Bootstrap 5</span></span>
                 <span>Feb 2026</span>
             </div>
             <ul class="bullet-list">
-                <li>Built a high-fidelity dashboard with Glassmorphism UI, Voice Search, and dynamic real-time backgrounds.</li>
-                <li>Visualized 24-hour forecasts and global city tracking using interactive trend graphs and autocomplete features.</li>
+                <li>Built a high-fidelity dashboard with Glassmorphism UI components, Voice Search utilities, and dynamic backgrounds.</li>
+                <li>Visualized 24-hour forecasts and global city coordinates using interactive trend charts and geocoding auto-completes.</li>
             </ul>
         </div>
 
         <div class="entry">
             <div class="entry-header">
-                <span>CineWave Movie Discovery | <span style="font-weight: normal; font-style: italic;">JavaScript, OMDB API, LocalStorage</span></span>
+                <span>CineWave Movie Discovery | <span style="font-weight: normal; font-style: italic;">JavaScript, OMDB API, LocalStorage, Bootstrap 5</span></span>
                 <span>Dec 2025</span>
             </div>
             <ul class="bullet-list">
-                <li>Developed a Netflix-inspired discovery app with real-time search, filtering, and a persistent watchlist feature.</li>
-                <li>Leveraged OMDB API for rich movie metadata and LocalStorage for a seamless, login-free user experience.</li>
+                <li>Developed a Netflix-styled discovery app with real-time searches, tags filtration, and persistent favorites watchlist.</li>
+                <li>Leveraged OMDB endpoints for movie datasets and LocalStorage parameters for user preferences syncing.</li>
             </ul>
         </div>
 
@@ -281,8 +357,8 @@
                 <span>Nov 2025</span>
             </div>
             <ul class="bullet-list">
-                <li>Created a full-stack bakery platform with product management, secure checkout, and an interactive admin panel.</li>
-                <li>Automated order tracking and inventory management to streamline business operations for small-scale bakeries.</li>
+                <li>Created a full-stack e-commerce catalog featuring filters, cart listings, checkouts, and an admin statistics page.</li>
+                <li>Automated order status records and database logs to streamline shop tracking operations.</li>
             </ul>
         </div>
 
@@ -294,11 +370,11 @@
             </tr>
             <tr>
                 <td class="skill-category">Developer Tools:</td>
-                <td>VS Code, Git, GitHub, XAMPP, Vercel, Command Line</td>
+                <td>VS Code, Git, GitHub, XAMPP, Vercel, Command Line Interface</td>
             </tr>
             <tr>
                 <td class="skill-category">Frameworks/Tech:</td>
-                <td>React, Bootstrap 5, Tailwind CSS, Google Cloud Console, REST APIs</td>
+                <td>Bootstrap 5, Tailwind CSS, Google Cloud APIs, REST APIs, JSON data</td>
             </tr>
         </table>
 
