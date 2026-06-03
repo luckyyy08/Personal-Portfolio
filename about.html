@@ -145,7 +145,7 @@
                                 <span class="text-muted">95%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" style="width: 95%"></div>
+                                <div class="progress-bar" data-width="95%" style="width: 0%"></div>
                             </div>
                         </div>
                         
@@ -155,7 +155,7 @@
                                 <span class="text-muted">80%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" style="width: 80%"></div>
+                                <div class="progress-bar" data-width="80%" style="width: 0%"></div>
                             </div>
                         </div>
                         
@@ -165,7 +165,7 @@
                                 <span class="text-muted">85%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" style="width: 85%"></div>
+                                <div class="progress-bar" data-width="85%" style="width: 0%"></div>
                             </div>
                         </div>
                     </div>
@@ -183,7 +183,7 @@
                                 <span class="text-muted">80%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" style="width: 80%"></div>
+                                <div class="progress-bar" data-width="80%" style="width: 0%"></div>
                             </div>
                         </div>
                         
@@ -193,7 +193,7 @@
                                 <span class="text-muted">75%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" style="width: 75%"></div>
+                                <div class="progress-bar" data-width="75%" style="width: 0%"></div>
                             </div>
                         </div>
                         
@@ -203,7 +203,7 @@
                                 <span class="text-muted">85%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" style="width: 85%"></div>
+                                <div class="progress-bar" data-width="85%" style="width: 0%"></div>
                             </div>
                         </div>
                     </div>
@@ -239,15 +239,21 @@
                     <div class="custom-card">
                         <div class="card-shine"></div>
                         <div class="timeline">
-                            <div class="timeline-item">
+                            <div class="timeline-item p-3 rounded-3 sim-credential-card mb-4">
                                 <div class="timeline-dot"></div>
-                                <h4 class="h5 fw-bold mb-1">Software Engineering Simulation</h4>
+                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <h4 class="h5 fw-bold mb-1 text-gradient">Software Engineering Simulation</h4>
+                                    <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Simulator</span>
+                                </div>
                                 <span class="text-primary fw-semibold small mb-2 d-inline-block">JPMorgan Chase & Co. (via Forage) | May 2026</span>
                                 <p class="text-muted small mb-0">Completed tasks in project structure setups, REST API integration, and controller development. Gained experience in Kafka streaming and database integration pipelines.</p>
                             </div>
-                            <div class="timeline-item">
+                            <div class="timeline-item p-3 rounded-3 sim-credential-card mb-4">
                                 <div class="timeline-dot"></div>
-                                <h4 class="h5 fw-bold mb-1">Technology Job Simulation</h4>
+                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <h4 class="h5 fw-bold mb-1 text-gradient">Technology Job Simulation</h4>
+                                    <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Simulator</span>
+                                </div>
                                 <span class="text-primary fw-semibold small mb-2 d-inline-block">Deloitte (via Forage) | May 2026</span>
                                 <p class="text-muted small mb-0">Analyzed technical business requirement documentation, proposed scalable architectures for enterprise services, and simulated real consulting review steps.</p>
                             </div>
@@ -305,6 +311,22 @@
             </div>
         </div>
     </footer>
+
+    <!-- Accent Color Theme Customizer Widget -->
+    <div class="theme-config-wrapper">
+        <button class="theme-config-toggle" id="accentCustomizerToggle" aria-label="Customize Colors">
+            <i class="fa-solid fa-palette"></i>
+        </button>
+        <div class="theme-config-panel" id="accentCustomizerPanel">
+            <h6 class="font-outfit fw-bold text-center mb-2 small">Select Accent Color</h6>
+            <div class="accent-color-options">
+                <span class="accent-dot accent-indigo active" data-accent="indigo" title="Indigo"></span>
+                <span class="accent-dot accent-cyan" data-accent="cyan" title="Cyan"></span>
+                <span class="accent-dot accent-rose" data-accent="rose" title="Rose"></span>
+                <span class="accent-dot accent-emerald" data-accent="emerald" title="Emerald"></span>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -50,6 +50,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Accent Theme Selector Logic
+    const accentToggleBtn = document.getElementById('accentCustomizerToggle');
+    const accentPanel = document.getElementById('accentCustomizerPanel');
+    const accentDots = document.querySelectorAll('.accent-dot');
+
+    if (accentToggleBtn && accentPanel) {
+        accentToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            accentPanel.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!accentPanel.contains(e.target) && e.target !== accentToggleBtn && !accentToggleBtn.contains(e.target)) {
+                accentPanel.classList.remove('show');
+            }
+        });
+    }
+
+    const savedAccent = localStorage.getItem('theme-accent') || 'indigo';
+    setAccent(savedAccent);
+
+    accentDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const selectedAccent = dot.getAttribute('data-accent');
+            setAccent(selectedAccent);
+        });
+    });
+
+    function setAccent(accentName) {
+        if (accentName === 'indigo') {
+            document.documentElement.removeAttribute('data-theme-accent');
+        } else {
+            document.documentElement.setAttribute('data-theme-accent', accentName);
+        }
+        localStorage.setItem('theme-accent', accentName);
+
+        const allSameAccentDots = document.querySelectorAll('.accent-dot');
+        allSameAccentDots.forEach(d => {
+            if (d.getAttribute('data-accent') === accentName) {
+                d.classList.add('active');
+            } else {
+                d.classList.remove('active');
+            }
+        });
+    }
+
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
@@ -172,9 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize particles
         const initParticles = () => {
             particlesArray = [];
-            const maxParticles = window.innerWidth < 768 ? 25 : 80;
-            const divisor = window.innerWidth < 768 ? 25000 : 18000;
-            const numberOfParticles = Math.min(maxParticles, Math.floor((canvas.width * canvas.height) / divisor));
+            const numberOfParticles = Math.min(80, Math.floor((canvas.width * canvas.height) / 18000));
             for (let i = 0; i < numberOfParticles; i++) {
                 particlesArray.push(new Particle());
             }
@@ -242,6 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const hudContainer = document.getElementById('hudText');
     if (hudContainer) {
+        const hudForm = document.getElementById('hudForm');
+        const hudInput = document.getElementById('hudInput');
+        const initialCursor = document.querySelector('.hud-console > .hud-body > .hud-cursor');
+
         const consoleLines = [
             "> Initializing Lokesh.Dev connection...",
             "> Booting core developer profile details... DONE",
@@ -253,6 +301,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let lineIndex = 0;
         let charIndex = 0;
+
+        const showInputForm = () => {
+            if (initialCursor) initialCursor.style.display = 'none';
+            if (hudForm) {
+                hudForm.style.display = 'flex';
+                // Trigger typing of introductory line
+                setTimeout(() => {
+                    if (hudInput) hudInput.focus();
+                }, 50);
+            }
+        };
 
         const typeChar = () => {
             if (lineIndex < consoleLines.length) {
@@ -286,10 +345,247 @@ document.addEventListener('DOMContentLoaded', () => {
                     charIndex = 0;
                     setTimeout(typeChar, 350); // Pause between lines
                 }
+            } else {
+                showInputForm();
             }
         };
 
         // Trigger Typing Sequence
         setTimeout(typeChar, 800);
+
+        // Command handler
+        const handleCommand = (cmdText) => {
+            const trimmed = cmdText.trim().toLowerCase();
+            const outputDiv = document.createElement('div');
+            outputDiv.className = 'hud-line text-muted small mt-1 mb-2';
+
+            if (trimmed === 'help') {
+                outputDiv.innerHTML = `Available commands:<br>
+  - <span class="text-info">about</span>    : Brief bio of Lokesh<br>
+  - <span class="text-info">skills</span>   : Technical skillset<br>
+  - <span class="text-info">projects</span> : Highlighted projects<br>
+  - <span class="text-info">contact</span>  : Connect coordinates<br>
+  - <span class="text-info">clear</span>    : Clear terminal logs`;
+            } else if (trimmed === 'about') {
+                outputDiv.innerHTML = `BSc Computer Science graduate, Full Stack Web Developer. Specializes in building secure databases, clean UI interfaces, and API connections. Based in Nashik, IN.`;
+            } else if (trimmed === 'skills') {
+                outputDiv.innerHTML = `Languages: PHP (OOP), JavaScript, MySQL, SQL, C++<br>
+Web Stack: HTML5, CSS3, Bootstrap 5, Tailwind CSS, REST APIs<br>
+Developer Tools: Git, GitHub, XAMPP, Vercel, VS Code`;
+            } else if (trimmed === 'projects') {
+                outputDiv.innerHTML = `Highlighted Projects:<br>
+  - <span class="text-warning">GramSetu</span>   : Rural-Tech governance super app<br>
+  - <span class="text-warning">CleanBox AI</span> : Gmail API storage declutter utility<br>
+  - <span class="text-warning">SkyCast</span>   : Weather platform with geocoding & voice search`;
+            } else if (trimmed === 'contact') {
+                outputDiv.innerHTML = `Email   : lokeshahire85@gmail.com<br>
+Phone   : +91 9579329098<br>
+GitHub  : github.com/luckyyy08<br>
+LinkedIn: linkedin.com/in/lokesh-ahire`;
+            } else if (trimmed === 'clear') {
+                hudContainer.innerHTML = '';
+                return;
+            } else if (trimmed === '') {
+                return; // do nothing
+            } else {
+                outputDiv.innerHTML = `Command not found: '${cmdText}'. Type <span class="text-info">help</span> for options.`;
+                outputDiv.className = 'hud-line text-danger small mt-1 mb-2';
+            }
+
+            hudContainer.appendChild(outputDiv);
+        };
+
+        if (hudForm) {
+            hudForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const cmd = hudInput.value;
+                
+                // Add typed command to log
+                const cmdLog = document.createElement('div');
+                cmdLog.className = 'hud-line command';
+                cmdLog.textContent = `visitor@lokesh.dev:~$ ${cmd}`;
+                hudContainer.appendChild(cmdLog);
+
+                // Process command
+                handleCommand(cmd);
+
+                // Clear and scroll
+                hudInput.value = '';
+                
+                const hudConsole = document.querySelector('.hud-console');
+                if (hudConsole) {
+                    hudConsole.scrollTop = hudConsole.scrollHeight;
+                }
+            });
+
+            // Focus terminal input on container click
+            const consoleCard = document.querySelector('.hud-console');
+            if (consoleCard) {
+                consoleCard.addEventListener('click', () => {
+                    if (hudForm.style.display !== 'none') {
+                        hudInput.focus();
+                    }
+                });
+            }
+        }
+    }
+
+    // ==========================================================================
+    // 3D Card Tilt Effect
+    // ==========================================================================
+    const tiltCards = document.querySelectorAll('.custom-card');
+
+    tiltCards.forEach(card => {
+        // Create glare overlay dynamically if not already present
+        if (!card.querySelector('.tilt-glare')) {
+            const glare = document.createElement('div');
+            glare.className = 'tilt-glare';
+            card.appendChild(glare);
+        }
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Subtle rotation angles
+            const rotateX = ((centerY - y) / centerY) * 8; 
+            const rotateY = ((x - centerX) / centerX) * 8;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            card.style.transition = 'transform 0.1s ease';
+
+            // Calculate glare highlight coords
+            const glareX = (x / rect.width) * 100;
+            const glareY = (y / rect.height) * 100;
+            card.style.setProperty('--glare-x', `${glareX}%`);
+            card.style.setProperty('--glare-y', `${glareY}%`);
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+    });
+
+    // ==========================================================================
+    // Contact Form AJAX Submission
+    // ==========================================================================
+    const contactForm = document.querySelector('form[action*="formsubmit.co"]');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (!contactForm.checkValidity()) {
+                e.stopPropagation();
+                contactForm.classList.add('was-validated');
+                return;
+            }
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnHtml = submitBtn.innerHTML;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Sending...`;
+
+            const formData = new FormData(contactForm);
+            const dataObject = {};
+            formData.forEach((value, key) => {
+                dataObject[key] = value;
+            });
+
+            const formAction = contactForm.getAttribute('action');
+            const ajaxAction = formAction.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+            fetch(ajaxAction, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(dataObject)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const successModalEl = document.getElementById('successModal');
+                if (successModalEl) {
+                    const successModal = new bootstrap.Modal(successModalEl);
+                    successModal.show();
+                } else {
+                    alert('Message sent successfully!');
+                }
+
+                contactForm.reset();
+                contactForm.classList.remove('was-validated');
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                alert('Oops! There was an issue sending your message. Please try again or email directly.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            });
+        });
+    }
+
+    // ==========================================================================
+    // Recruiter Quick Message Templates Logic
+    // ==========================================================================
+    const templateTags = document.querySelectorAll('.template-tag');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
+
+    if (templateTags.length > 0 && subjectInput && messageInput) {
+        templateTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Remove active class from other tags
+                templateTags.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tag
+                tag.classList.add('active');
+
+                // Pre-populate input values
+                subjectInput.value = tag.getAttribute('data-subject') || '';
+                messageInput.value = tag.getAttribute('data-message') || '';
+            });
+        });
+
+        // Parse search query parameters to check if auto-fill template triggers
+        const urlParams = new URLSearchParams(window.location.search);
+        const reason = urlParams.get('reason');
+        if (reason) {
+            const targetTag = document.querySelector(`.template-tag[data-template="${reason}"]`);
+            if (targetTag) {
+                targetTag.click();
+            }
+        }
+    }
+
+    // ==========================================================================
+    // Scroll-Triggered Progress Bars Animation
+    // ==========================================================================
+    const progressBars = document.querySelectorAll('.progress-bar');
+    if (progressBars.length > 0) {
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    const targetWidth = bar.getAttribute('data-width');
+                    if (targetWidth) {
+                        bar.style.width = targetWidth;
+                    }
+                    barObserver.unobserve(bar);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        progressBars.forEach(bar => {
+            barObserver.observe(bar);
+        });
     }
 });
