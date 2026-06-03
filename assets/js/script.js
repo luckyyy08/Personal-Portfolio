@@ -430,48 +430,6 @@ LinkedIn: linkedin.com/in/lokesh-ahire`;
         }
     }
 
-    // ==========================================================================
-    // 3D Card Tilt Effect
-    // ==========================================================================
-    const tiltCards = document.querySelectorAll('.custom-card');
-
-    tiltCards.forEach(card => {
-        // Create glare overlay dynamically if not already present
-        if (!card.querySelector('.tilt-glare')) {
-            const glare = document.createElement('div');
-            glare.className = 'tilt-glare';
-            card.appendChild(glare);
-        }
-
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            // Subtle rotation angles
-            const rotateX = ((centerY - y) / centerY) * 8; 
-            const rotateY = ((x - centerX) / centerX) * 8;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            card.style.transition = 'transform 0.1s ease';
-
-            // Calculate glare highlight coords
-            const glareX = (x / rect.width) * 100;
-            const glareY = (y / rect.height) * 100;
-            card.style.setProperty('--glare-x', `${glareX}%`);
-            card.style.setProperty('--glare-y', `${glareY}%`);
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-            card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-        });
-    });
-
-    // ==========================================================================
     // Contact Form AJAX Submission
     // ==========================================================================
     const contactForm = document.querySelector('form[action*="formsubmit.co"]');
