@@ -292,36 +292,37 @@ export default function Hero() {
           {/* Profile Right Container - Centered and Large */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
             
-            {/* Sci-Fi Squircle Frame holding profile pic */}
-            <div className="relative mx-auto select-none mt-10 lg:mt-0 max-w-[260px] sm:max-w-[300px] w-full group">
-              {/* Soft Backlight glow */}
-              <div className="absolute -inset-4 bg-indigo-500/15 blur-xl rounded-[2.5rem] -z-10 group-hover:bg-indigo-500/25 transition-all duration-300 animate-pulse-glow" />
-
-              {/* Main Outer Border container */}
-              <div className="relative w-full aspect-[4/5] rounded-[2rem] p-1 bg-gradient-to-tr from-indigo-500 via-purple-500 to-violet-600 shadow-2xl shadow-indigo-500/10 flex items-center justify-center overflow-hidden">
-                <div className="relative w-full h-full rounded-[1.8rem] overflow-hidden border border-black/30 bg-[#07070a]">
+            {/* Sci-Fi Orbiting Photo Frame holding profile pic */}
+            <div className="relative mx-auto select-none mt-10 lg:mt-0">
+              <div className="relative w-[300px] h-[300px] sm:w-[390px] sm:h-[390px] rounded-full p-2.5 bg-gradient-to-tr from-indigo-500 to-violet-600 shadow-2xl shadow-indigo-500/10 flex items-center justify-center">
+                <div className="relative w-full h-full rounded-full overflow-hidden border border-black/30 bg-[#07070a]">
                   <Image
                     src="/assets/image/Pic.jpg"
                     alt="Lokesh Dipak Ahire"
                     fill
-                    className="object-cover object-top scale-102 group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-top scale-105"
                     priority
                   />
                 </div>
+
+                {/* Animated Rotating Concentric Sci-fi Rings */}
+                <div className="absolute -inset-3 border border-indigo-500/20 border-dashed rounded-full animate-orbit-clockwise pointer-events-none" />
+                <div className="absolute -inset-6 border border-violet-500/15 rounded-full animate-orbit-counter pointer-events-none" />
               </div>
 
               {/* Floating Skill Indicators */}
-              <div className="absolute -top-2 -right-3 px-3 py-1.5 rounded-xl bg-black/60 border border-white/10 backdrop-blur-md flex items-center gap-1.5 text-xs text-indigo-300 font-semibold shadow-lg">
+              <div className="absolute -top-1.5 -right-3 px-3 py-1.5 rounded-xl bg-black/60 border border-white/10 backdrop-blur-md flex items-center gap-1.5 text-xs text-indigo-300 font-semibold shadow-lg">
                 <Code2 className="w-3.5 h-3.5" />
                 Full Stack
               </div>
-              <div className="absolute bottom-6 -left-6 px-3 py-1.5 rounded-xl bg-black/60 border border-white/10 backdrop-blur-md flex items-center gap-1.5 text-xs text-violet-300 font-semibold shadow-lg">
-                <span className="w-2 h-2 rounded-full bg-purple-500" />
+              <div className="absolute bottom-12 -left-6 px-3 py-1.5 rounded-xl bg-black/60 border border-white/10 backdrop-blur-md flex items-center gap-1.5 text-xs text-violet-300 font-semibold shadow-lg">
+                <span className="w-2.5 h-2.5 rounded-full bg-purple-500" />
                 PHP OOP
               </div>
             </div>
 
           </div>
+
         </div>
       </div>
     </section>
