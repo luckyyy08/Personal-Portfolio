@@ -122,86 +122,165 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Main Hero Left Description */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          {/* Main Hero Left Description & HUD Console */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
             
-            {/* Status pill indicator */}
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-400 mb-6 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              Available for Internships & Placement Roles
-            </span>
-
-            {/* Main title */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 font-outfit text-white">
-              Hi, I'm <br />
-              <span className="bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">
-                Lokesh Dipak Ahire
+            <div>
+              {/* Status pill indicator */}
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-400 mb-4 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Available for Internships & Placement Roles
               </span>
-            </h1>
 
-            {/* Large introduction message */}
-            <h2 className="text-xl md:text-2xl text-gray-300 font-medium mb-4 leading-relaxed max-w-2xl">
-              Building modern web applications with clean code and creative solutions
-            </h2>
+              {/* Main title */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-3 font-outfit text-white">
+                Hi, I'm <br />
+                <span className="bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">
+                  Lokesh Dipak Ahire
+                </span>
+              </h1>
 
-            <p className="text-sm md:text-base text-gray-400 mb-8 max-w-xl leading-relaxed">
-              BSc Computer Science graduate specializing in Frontend, Backend PHP/Node.js, and database engineering. Turning logic parameters into premium, fully responsive web layouts.
-            </p>
+              {/* Large introduction message */}
+              <h2 className="text-lg md:text-xl text-gray-300 font-medium mb-3 leading-relaxed max-w-2xl">
+                Building modern web applications with clean code and creative solutions
+              </h2>
+
+              <p className="text-sm text-gray-400 mb-4 max-w-xl leading-relaxed">
+                BSc Computer Science graduate specializing in Frontend, Backend PHP/Node.js, and database engineering. Turning logic parameters into premium, fully responsive web layouts.
+              </p>
+            </div>
 
             {/* Call to action buttons */}
-            <div className="flex flex-wrap gap-4 mb-6">
+            <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-violet-600 rounded-full shadow-lg shadow-indigo-600/20 hover:brightness-110 hover:shadow-indigo-600/35 transition-all duration-300"
+                className="flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-violet-600 rounded-full shadow-lg shadow-indigo-600/20 hover:brightness-110 hover:shadow-indigo-600/35 transition-all duration-300"
               >
                 Let's Connect
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="#projects"
-                className="flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all duration-300"
+                className="flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all duration-300"
               >
                 Inspect Work
               </a>
             </div>
 
             {/* Social profiles linking */}
-            <div className="flex gap-3 mb-10">
+            <div className="flex gap-3">
               <a
                 href="https://github.com/luckyyy08"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-indigo-600/20 hover:border-indigo-500/30 transition-all duration-300"
+                className="p-2.5 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-indigo-600/20 hover:border-indigo-500/30 transition-all duration-300"
                 aria-label="GitHub Profile"
               >
-                <GithubIcon className="w-5 h-5" />
+                <GithubIcon className="w-4.5 h-4.5" />
               </a>
               <a
                 href="https://www.linkedin.com/in/lokesh-ahire"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-indigo-600/20 hover:border-indigo-500/30 transition-all duration-300"
+                className="p-2.5 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-indigo-600/20 hover:border-indigo-500/30 transition-all duration-300"
                 aria-label="LinkedIn Profile"
               >
-                <LinkedinIcon className="w-5 h-5" />
+                <LinkedinIcon className="w-4.5 h-4.5" />
               </a>
               <a
                 href="mailto:lokeshahire85@gmail.com"
-                className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-indigo-600/20 hover:border-indigo-500/30 transition-all duration-300"
+                className="p-2.5 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-indigo-600/20 hover:border-indigo-500/30 transition-all duration-300"
                 aria-label="Email Lokesh"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-4.5 h-4.5" />
               </a>
             </div>
 
+            {/* Developer Console HUD Simulator */}
+            <div className="w-full flex flex-col gap-3 pt-2">
+              <div className="hud-console glass-panel rounded-2xl border border-white/10 overflow-hidden shadow-2xl flex flex-col h-[230px]">
+                {/* Console Header Bar */}
+                <div className="flex items-center justify-between px-4 py-2 bg-black/60 border-b border-white/5 select-none">
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+                  </div>
+                  <div className="flex items-center gap-1.5 text-gray-400 text-[10px] font-semibold tracking-wide">
+                    <Terminal className="w-3 h-3" />
+                    visitor@lokesh.dev:~$
+                  </div>
+                  <span className="text-[9px] text-gray-500 font-mono">v1.2.0</span>
+                </div>
+
+                {/* Console Body Scroll area */}
+                <div className="p-3.5 flex-1 overflow-y-auto font-mono text-[11px] space-y-2 text-left custom-scrollbar bg-black/45">
+                  {consoleHistory.map((line, idx) => (
+                    <div
+                      key={idx}
+                      className={`${
+                        line.type === "input"
+                          ? "text-gray-300"
+                          : line.type === "error"
+                          ? "text-red-400"
+                          : line.type === "system"
+                          ? "text-indigo-400"
+                          : "text-emerald-400"
+                      }`}
+                    >
+                      {line.text}
+                    </div>
+                  ))}
+                  <div ref={consoleBottomRef} />
+                </div>
+
+                {/* Interactive Input Form */}
+                <form onSubmit={handleConsoleSubmit} className="flex border-t border-white/5 bg-black/55">
+                  <span className="pl-4 pr-1.5 py-2.5 text-[11px] font-mono text-indigo-400 select-none">
+                    $
+                  </span>
+                  <input
+                    type="text"
+                    value={consoleInput}
+                    onChange={(e) => setConsoleInput(e.target.value)}
+                    placeholder="type 'help' or 'about'..."
+                    className="flex-1 py-2.5 text-[11px] font-mono text-white bg-transparent border-0 focus:outline-none focus:ring-0 placeholder-gray-600"
+                    autoComplete="off"
+                    spellCheck="false"
+                  />
+                  <button
+                    type="submit"
+                    className="px-4 text-indigo-400 hover:text-white bg-white/5 transition-colors"
+                    aria-label="Submit command"
+                  >
+                    <Play className="w-3 h-3 fill-current" />
+                  </button>
+                </form>
+              </div>
+
+              {/* Quick terminal tags helper */}
+              <div className="flex flex-wrap items-center gap-2 text-[10px] font-mono text-gray-500 justify-start select-none">
+                <span>Try tags:</span>
+                {["about", "skills", "projects", "contact"].map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => handleQuickCommand(tag)}
+                    className="px-2 py-0.5 rounded bg-white/5 border border-white/5 hover:border-indigo-500/30 hover:text-indigo-400 transition-colors cursor-pointer"
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Quick statistics layout */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-6 border-t border-white/10 w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-5 border-t border-white/10 w-full">
               {stats.map((stat, i) => (
                 <div key={i} className="flex flex-col">
-                  <span className="text-2xl md:text-3xl font-extrabold text-white bg-gradient-to-r from-white via-indigo-100 to-indigo-300 bg-clip-text text-transparent">
+                  <span className="text-xl md:text-2xl font-extrabold text-white bg-gradient-to-r from-white via-indigo-100 to-indigo-300 bg-clip-text text-transparent">
                     {stat.value}
                   </span>
-                  <span className="text-[11px] md:text-xs text-gray-400 font-semibold tracking-wider uppercase mt-1">
+                  <span className="text-[10px] text-gray-500 font-semibold tracking-wider uppercase mt-0.5">
                     {stat.label}
                   </span>
                 </div>
@@ -210,100 +289,25 @@ export default function Hero() {
 
           </div>
 
-          {/* Interactive Shell Console and Profile Right Container */}
-          <div className="lg:col-span-5 flex flex-col gap-6 justify-center">
+          {/* Profile Right Container - Centered and Large */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center">
             
-            {/* Developer Console HUD Simulator */}
-            <div className="hud-console glass-panel rounded-2xl border border-white/10 overflow-hidden shadow-2xl flex flex-col h-[280px]">
-              {/* Console Header Bar */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-black/60 border-b border-white/5 select-none">
-                <div className="flex gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-red-500/70" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                  <span className="w-3 h-3 rounded-full bg-green-500/70" />
-                </div>
-                <div className="flex items-center gap-1.5 text-gray-400 text-xs font-semibold tracking-wide">
-                  <Terminal className="w-3.5 h-3.5" />
-                  visitor@lokesh.dev:~$
-                </div>
-                <span className="text-[10px] text-gray-500 font-mono">v1.2.0</span>
-              </div>
-
-              {/* Console Body Scroll area */}
-              <div className="p-4 flex-1 overflow-y-auto font-mono text-xs space-y-2.5 text-left custom-scrollbar bg-black/45">
-                {consoleHistory.map((line, idx) => (
-                  <div
-                    key={idx}
-                    className={`${
-                      line.type === "input"
-                        ? "text-gray-300"
-                        : line.type === "error"
-                        ? "text-red-400"
-                        : line.type === "system"
-                        ? "text-indigo-400"
-                        : "text-emerald-400"
-                    }`}
-                  >
-                    {line.text}
-                  </div>
-                ))}
-                <div ref={consoleBottomRef} />
-              </div>
-
-              {/* Interactive Input Form */}
-              <form onSubmit={handleConsoleSubmit} className="flex border-t border-white/5 bg-black/55">
-                <span className="pl-4 pr-1.5 py-3 text-xs font-mono text-indigo-400 select-none">
-                  $
-                </span>
-                <input
-                  type="text"
-                  value={consoleInput}
-                  onChange={(e) => setConsoleInput(e.target.value)}
-                  placeholder="type 'help' or 'about'..."
-                  className="flex-1 py-3 text-xs font-mono text-white bg-transparent border-0 focus:outline-none focus:ring-0 placeholder-gray-600"
-                  autoComplete="off"
-                  spellCheck="false"
-                />
-                <button
-                  type="submit"
-                  className="px-4 text-indigo-400 hover:text-white bg-white/5 transition-colors"
-                  aria-label="Submit command"
-                >
-                  <Play className="w-3 h-3 fill-current" />
-                </button>
-              </form>
-            </div>
-
-            {/* Quick terminal tags helper */}
-            <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-gray-500 justify-start select-none">
-              <span>Try tags:</span>
-              {["about", "skills", "projects", "contact"].map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => handleQuickCommand(tag)}
-                  className="px-2 py-0.5 rounded bg-white/5 border border-white/5 hover:border-indigo-500/30 hover:text-indigo-400 transition-colors"
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-
             {/* Sci-Fi Orbiting Photo Frame holding profile pic */}
-            <div className="relative mx-auto mt-6 select-none max-w-[280px]">
-              <div className="relative w-[220px] h-[220px] rounded-full p-2.5 bg-gradient-to-tr from-indigo-500 to-violet-600 shadow-xl shadow-indigo-500/10 flex items-center justify-center">
-                <div className="relative w-full h-full rounded-full overflow-hidden border border-black/30">
+            <div className="relative mx-auto select-none mt-10 lg:mt-0">
+              <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] rounded-full p-2.5 bg-gradient-to-tr from-indigo-500 to-violet-600 shadow-2xl shadow-indigo-500/10 flex items-center justify-center">
+                <div className="relative w-full h-full rounded-full overflow-hidden border border-black/30 bg-[#07070a]">
                   <Image
                     src="/assets/image/Pic.jpg"
                     alt="Lokesh Dipak Ahire"
                     fill
-                    className="object-cover scale-105"
+                    className="object-cover object-top scale-105"
                     priority
                   />
                 </div>
 
-                {/* Animated Rotating Sci-fi Rings */}
-                <div className="absolute inset-n2.5 border border-indigo-500/20 border-dashed rounded-full animate-orbit-clockwise pointer-events-none w-[240px] h-[240px]" />
-                <div className="absolute inset-n5 border border-violet-500/15 rounded-full animate-orbit-counter pointer-events-none w-[260px] h-[260px]" />
+                {/* Animated Rotating Concentric Sci-fi Rings */}
+                <div className="absolute -inset-3 border border-indigo-500/20 border-dashed rounded-full animate-orbit-clockwise pointer-events-none" />
+                <div className="absolute -inset-6 border border-violet-500/15 rounded-full animate-orbit-counter pointer-events-none" />
               </div>
 
               {/* Floating Skill Indicators */}
