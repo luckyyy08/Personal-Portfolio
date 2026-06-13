@@ -19,9 +19,14 @@ export default function Hero() {
   ]);
   const [consoleInput, setConsoleInput] = useState("");
   const consoleBottomRef = useRef<HTMLDivElement>(null);
+  const isInitialMount = useRef(true);
 
   // Auto-scroll terminal history to bottom
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     consoleBottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [consoleHistory]);
 
