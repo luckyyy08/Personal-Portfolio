@@ -22,6 +22,24 @@ interface Project {
 
 const projectsData: Project[] = [
   {
+    id: "riverdine",
+    title: "RiverDine",
+    category: "frontend",
+    image: "/assets/image/riverdine.png",
+    shortDesc: "A premium riverside restaurant & banquet website featuring customizable theme engines, live menu searching, and booking forms.",
+    fullDesc: "RiverDine is a luxury digital platform created for a riverside dining and banquet venue. Built with optimized performance and sleek dark-mode aesthetics, it features an interactive theme changer (Obsidian Gold, Midnight Rose, Royal Emerald), real-time menu searches with dietary filters, immersive scroll animations, and table/banquet reservation forms.",
+    technologies: ["HTML5", "CSS3 Variables", "JavaScript ES6", "Font Awesome", "Scroll Animations"],
+    features: [
+      "Dynamic Theme Selector: Client-side CSS variables switcher between Gold, Rose, and Emerald styles.",
+      "Live Menu Filter: Real-time query search and dietary toggles (Veg/Non-Veg) with instant UI updates.",
+      "Lead Capture Forms: Interactive and validated booking structures for events and reservations.",
+      "Immersive Layout: Smooth scroll-reveal animations, custom toast notifications, and premium aesthetics."
+    ],
+    demoUrl: "https://river-dine-restaurant-banquet.vercel.app/",
+    githubUrl: "https://github.com/luckyyy08/River-Dine-Restaurant-Banquet.git",
+    badge: "Luxury UI"
+  },
+  {
     id: "gramsetu",
     title: "GramSetu",
     category: "full-stack",
