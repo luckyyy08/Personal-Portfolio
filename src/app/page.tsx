@@ -20,26 +20,26 @@ export default function Home() {
 
       {/* Section Content Wrapper */}
       <main className="flex flex-col flex-1">
-        {/* Hero Area & Terminal HUD */}
+        {/* Hero — Identity & CTA */}
         <Hero />
 
-        {/* Bio & Timeline (SPPU, JPMorgan, Deloitte sims) */}
+        {/* About — Bio & Timeline */}
         <About />
 
-        {/* Technical Proficiency Meters */}
+        {/* Skills — Technical Proficiency */}
         <Skills />
 
-        {/* Dynamic Project Filter Catalog & Modal Details */}
+        {/* Projects — Portfolio Catalog */}
         <Projects />
 
-        {/* Developer Network & DSA Stats (LeetCode, GitHub, LinkedIn) */}
+        {/* Profiles — GitHub, LeetCode, LinkedIn */}
         <CodingProfiles />
 
-        {/* Recruiter Custom-Template Inquiries Form */}
+        {/* Contact — Inquiry Form */}
         <Contact />
       </main>
 
-      {/* Footer Area */}
+      {/* Footer */}
       <Footer />
     </>
   );

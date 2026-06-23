@@ -2,10 +2,27 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Lokesh Ahire | Premium Software Developer Portfolio",
-  description: "Professional software developer portfolio of Lokesh Dipak Ahire. BSc Computer Science student & Aspiring Full Stack Developer. Discover GramSetu, CleanBox AI, and verified internships.",
-  keywords: "Lokesh Ahire, Web Developer, Portfolio, Full Stack, Next.js, React, Tailwind CSS, PHP OOP, MySQL, Nashik, Savitribai Phule Pune University",
-  authors: [{ name: "Lokesh Ahire" }],
+  title: "Lokesh Ahire | Full Stack Developer Portfolio",
+  description: "Professional developer portfolio of Lokesh Dipak Ahire — Full Stack Developer specializing in React, Next.js, PHP, and MySQL. BSc Computer Science graduate building premium web applications.",
+  keywords: "Lokesh Ahire, Full Stack Developer, Web Developer, Portfolio, React, Next.js, Tailwind CSS, PHP OOP, MySQL, JavaScript, Frontend Engineer, Nashik",
+  authors: [{ name: "Lokesh Ahire", url: "https://github.com/luckyyy08" }],
+  creator: "Lokesh Ahire",
+  openGraph: {
+    type: "website",
+    title: "Lokesh Ahire | Full Stack Developer Portfolio",
+    description: "Building modern web applications with clean code and creative solutions. React, PHP, MySQL specialist.",
+    siteName: "Lokesh.Dev",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lokesh Ahire | Full Stack Developer",
+    description: "Full Stack Developer — React, Next.js, PHP, MySQL. Building premium web applications.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -14,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

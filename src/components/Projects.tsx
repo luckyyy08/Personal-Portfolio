@@ -2,9 +2,12 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ExternalLink, Info, X, CheckCircle2, Server, Globe } from "lucide-react";
+import { ExternalLink, Info, X, CheckCircle2, Server, Globe, ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/Icons";
 import { motion, AnimatePresence } from "framer-motion";
+import SectionHeader from "@/components/ui/SectionHeader";
+import GlassCard from "@/components/ui/GlassCard";
+import { useStaggerReveal } from "@/hooks/useScrollReveal";
 
 interface Project {
   id: string;
@@ -18,6 +21,7 @@ interface Project {
   demoUrl: string;
   githubUrl: string;
   badge?: string;
+  badgeColor?: string;
 }
 
 const projectsData: Project[] = [
@@ -37,7 +41,8 @@ const projectsData: Project[] = [
     ],
     demoUrl: "https://river-dine-restaurant-banquet.vercel.app/",
     githubUrl: "https://github.com/luckyyy08/River-Dine-Restaurant-Banquet.git",
-    badge: "Luxury UI"
+    badge: "Luxury UI",
+    badgeColor: "from-amber-500/20 to-orange-500/20 text-amber-300 border-amber-500/20",
   },
   {
     id: "gramsetu",
@@ -55,7 +60,8 @@ const projectsData: Project[] = [
     ],
     demoUrl: "https://gram-setu-ruddy.vercel.app",
     githubUrl: "https://github.com/luckyyy08/GramSetu.git",
-    badge: "Social Impact"
+    badge: "Social Impact",
+    badgeColor: "from-emerald-500/20 to-green-500/20 text-emerald-300 border-emerald-500/20",
   },
   {
     id: "cleanbox",
@@ -72,7 +78,8 @@ const projectsData: Project[] = [
     ],
     demoUrl: "https://email-cleaner-flame.vercel.app/",
     githubUrl: "https://github.com/luckyyy08/EmailCleaner.git",
-    badge: "API Featured"
+    badge: "API Featured",
+    badgeColor: "from-sky-500/20 to-cyan-500/20 text-sky-300 border-sky-500/20",
   },
   {
     id: "skycast",
@@ -89,7 +96,8 @@ const projectsData: Project[] = [
     ],
     demoUrl: "https://sky-cast-hazel.vercel.app/",
     githubUrl: "https://github.com/luckyyy08/SkyCast.git",
-    badge: "Interactive"
+    badge: "Interactive",
+    badgeColor: "from-violet-500/20 to-purple-500/20 text-violet-300 border-violet-500/20",
   },
   {
     id: "cinewave",
@@ -106,7 +114,8 @@ const projectsData: Project[] = [
     ],
     demoUrl: "https://cine-wave-pi.vercel.app/",
     githubUrl: "https://github.com/luckyyy08/CineWave-",
-    badge: "Hot"
+    badge: "Hot",
+    badgeColor: "from-rose-500/20 to-pink-500/20 text-rose-300 border-rose-500/20",
   },
   {
     id: "cakecraft",
@@ -123,48 +132,62 @@ const projectsData: Project[] = [
     ],
     demoUrl: "https://cake-craft-alpha.vercel.app/demo.html",
     githubUrl: "https://github.com/luckyyy08/CakeCraft.git",
-    badge: "E-Commerce"
+    badge: "E-Commerce",
+    badgeColor: "from-indigo-500/20 to-blue-500/20 text-indigo-300 border-indigo-500/20",
   }
 ];
+
+const filterOptions = [
+  { key: "all", label: "All Projects" },
+  { key: "full-stack", label: "Full Stack" },
+  { key: "frontend", label: "Frontend" },
+] as const;
 
 export default function Projects() {
   const [filter, setFilter] = useState<"all" | "full-stack" | "frontend">("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const gridRef = useStaggerReveal<HTMLDivElement>({ stagger: 0.12, distance: 40 });
 
   const filteredProjects = projectsData.filter(
     (p) => filter === "all" || p.category === filter
   );
 
   return (
-    <section id="projects" className="relative py-24 border-t border-white/5 overflow-hidden">
-      {/* Lights background */}
+    <section id="projects" className="relative py-28 overflow-hidden">
+      {/* Section divider */}
+      <div className="absolute top-0 left-0 w-full section-divider" />
+
+      {/* Background lights */}
       <div className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] bg-violet-500/5 glow-blur -z-10" />
+      <div className="absolute top-1/4 right-1/3 w-[300px] h-[300px] bg-indigo-500/5 glow-blur -z-10" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
-        {/* Header Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-outfit text-white mb-3">
-            Selected Projects
-          </h2>
-          <div className="h-1 w-16 bg-indigo-500 rounded-full mx-auto mb-4" />
-          <p className="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
-            Exploring full-stack dashboards, API integrations, and developer client solutions.
-          </p>
-        </div>
+        <SectionHeader
+          title="Selected Projects"
+          subtitle="Exploring full-stack dashboards, API integrations, and developer client solutions."
+          badge="Portfolio"
+        />
 
         {/* Filter buttons */}
-        <div className="flex justify-center items-center gap-2 mb-12 flex-wrap">
-          {["all", "full-stack", "frontend"].map((cat) => (
+        <div className="flex justify-center items-center gap-2 mb-14 flex-wrap">
+          {filterOptions.map((opt) => (
             <button
-              key={cat}
-              onClick={() => setFilter(cat as any)}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border ${
-                filter === cat
-                  ? "bg-gradient-to-r from-indigo-600 to-violet-600 border-indigo-500/20 text-white shadow-lg shadow-indigo-600/15"
-                  : "bg-white/5 border-white/10 text-gray-400 hover:text-white hover:bg-white/10"
+              key={opt.key}
+              onClick={() => setFilter(opt.key)}
+              className={`relative px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-400 border ${
+                filter === opt.key
+                  ? "text-white border-indigo-500/30 shadow-lg shadow-indigo-600/15"
+                  : "bg-white/[0.03] border-white/[0.08] text-gray-400 hover:text-white hover:bg-white/[0.06] hover:border-white/15"
               }`}
             >
-              {cat === "all" ? "All Projects" : cat.replace("-", " ")}
+              {filter === opt.key && (
+                <motion.span
+                  layoutId="activeFilterPill"
+                  className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-full -z-10"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+              {opt.label}
             </button>
           ))}
         </div>
@@ -172,85 +195,107 @@ export default function Projects() {
         {/* Projects Grid */}
         <motion.div
           layout
+          ref={gridRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35 }}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 key={project.id}
-                className="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-white/5 bg-black/40 flex flex-col group"
               >
-                {/* Image Wrapper */}
-                <div className="relative aspect-video w-full overflow-hidden border-b border-white/5 bg-neutral-900">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* Floating category badge */}
-                  {project.badge && (
-                    <span className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-[10px] font-bold tracking-wider text-indigo-300 uppercase shadow-sm">
-                      {project.badge}
-                    </span>
-                  )}
-                </div>
+                <GlassCard
+                  className="overflow-hidden flex flex-col h-full group"
+                  tiltStrength={5}
+                  glowColor="rgba(99, 102, 241, 0.08)"
+                >
+                  {/* Image Wrapper */}
+                  <div className="relative aspect-video w-full overflow-hidden border-b border-white/[0.04] bg-neutral-900">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Floating badge */}
+                    {project.badge && (
+                      <span className={`absolute top-4 right-4 px-3 py-1 rounded-full bg-gradient-to-r ${project.badgeColor || "from-indigo-500/20 to-violet-500/20 text-indigo-300 border-indigo-500/20"} backdrop-blur-xl border text-[10px] font-bold tracking-wider uppercase shadow-lg`}>
+                        {project.badge}
+                      </span>
+                    )}
 
-                {/* Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold text-white font-outfit mb-2 group-hover:text-indigo-400 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">
-                      {project.shortDesc}
-                    </p>
-                  </div>
-
-                  <div>
-                    {/* Tech Badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.technologies.slice(0, 3).map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wide bg-indigo-500/10 border border-indigo-500/20 text-indigo-400"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 3 && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-white/5 text-gray-400">
-                          +{project.technologies.length - 3} more
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Actions */}
-                    <div className="grid grid-cols-2 gap-3 mt-auto">
-                      <button
-                        onClick={() => setSelectedProject(project)}
-                        className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-white/10 text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
-                      >
-                        <Info className="w-3.5 h-3.5" />
-                        Details
-                      </button>
+                    {/* Quick action on hover */}
+                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                       <a
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-indigo-600 to-violet-600 shadow-md shadow-indigo-600/10 hover:brightness-110 transition-all"
+                        className="p-2.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 transition-all inline-flex"
+                        aria-label="Open live demo"
                       >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        Live Demo
+                        <ArrowUpRight className="w-4 h-4" />
                       </a>
                     </div>
                   </div>
-                </div>
+
+                  {/* Content */}
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold text-white font-outfit mb-2 group-hover:text-indigo-300 transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-400 text-xs md:text-sm mb-6 leading-relaxed line-clamp-3">
+                        {project.shortDesc}
+                      </p>
+                    </div>
+
+                    <div>
+                      {/* Tech Badges */}
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {project.technologies.slice(0, 3).map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2.5 py-1 rounded-lg text-[10px] font-semibold tracking-wide bg-indigo-500/8 border border-indigo-500/15 text-indigo-400 hover:bg-indigo-500/15 hover:border-indigo-500/25 transition-colors"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.technologies.length > 3 && (
+                          <span className="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-white/[0.04] text-gray-500 border border-white/[0.06]">
+                            +{project.technologies.length - 3}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Actions */}
+                      <div className="grid grid-cols-2 gap-3 mt-auto">
+                        <button
+                          onClick={() => setSelectedProject(project)}
+                          className="btn-outline flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-gray-300"
+                        >
+                          <Info className="w-3.5 h-3.5" />
+                          Details
+                        </button>
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-primary flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-white"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          Live Demo
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </GlassCard>
               </motion.div>
             ))}
           </AnimatePresence>
@@ -260,33 +305,33 @@ export default function Projects() {
         <AnimatePresence>
           {selectedProject && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-              {/* Dark Overlay backdrop */}
+              {/* Overlay */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedProject(null)}
-                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                className="absolute inset-0 bg-black/85 backdrop-blur-md"
               />
 
-              {/* Modal Card content */}
+              {/* Modal */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                initial={{ opacity: 0, scale: 0.92, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 15 }}
-                transition={{ type: "spring", duration: 0.45 }}
-                className="relative max-w-3xl w-full max-h-[85vh] overflow-y-auto glass-panel border border-white/10 rounded-3xl shadow-2xl bg-[#0a0a0c] z-10 flex flex-col text-left"
+                exit={{ opacity: 0, scale: 0.92, y: 20 }}
+                transition={{ type: "spring", duration: 0.5, bounce: 0.15 }}
+                className="relative max-w-3xl w-full max-h-[85vh] overflow-y-auto glass-card border border-white/[0.08] rounded-3xl shadow-2xl bg-[#0a0a0c]/95 z-10 flex flex-col text-left"
               >
                 {/* Close Button */}
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-5 right-5 p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-gray-400 hover:text-white transition-colors z-20"
+                  className="absolute top-5 right-5 p-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-gray-400 hover:text-white transition-all z-20 hover:rotate-90 duration-300"
                   aria-label="Close details"
                 >
                   <X className="w-4 h-4" />
                 </button>
 
-                {/* Hero Project Banner */}
+                {/* Banner */}
                 <div className="relative aspect-video w-full bg-neutral-900 border-b border-white/5">
                   <Image
                     src={selectedProject.image}
@@ -294,9 +339,9 @@ export default function Projects() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-8">
-                    <span className="px-2.5 py-1 rounded bg-indigo-600/90 text-[10px] font-bold uppercase tracking-wider text-white border border-indigo-500/20 shadow-sm">
+                    <span className="px-3 py-1 rounded-lg bg-indigo-600/90 text-[10px] font-bold uppercase tracking-wider text-white border border-indigo-500/20 shadow-lg">
                       {selectedProject.category === "full-stack" ? "Full Stack" : "Frontend"}
                     </span>
                     <h3 className="text-2xl md:text-3xl font-extrabold text-white mt-2.5 font-outfit">
@@ -306,10 +351,10 @@ export default function Projects() {
                 </div>
 
                 {/* Content Panel */}
-                <div className="p-8 space-y-6">
+                <div className="p-8 space-y-7">
                   {/* Overview */}
                   <div>
-                    <h4 className="text-xs uppercase font-bold tracking-wider text-gray-500 mb-2.5">
+                    <h4 className="text-xs uppercase font-bold tracking-wider text-gray-500 mb-3">
                       Project Overview
                     </h4>
                     <p className="text-gray-300 text-sm leading-relaxed">
@@ -317,12 +362,12 @@ export default function Projects() {
                     </p>
                   </div>
 
-                  {/* Features List */}
+                  {/* Features */}
                   <div>
                     <h4 className="text-xs uppercase font-bold tracking-wider text-gray-500 mb-3">
                       Key Highlights & Features
                     </h4>
-                    <ul className="space-y-2.5">
+                    <ul className="space-y-3">
                       {selectedProject.features.map((feature, i) => (
                         <li key={i} className="flex gap-2.5 items-start text-sm text-gray-400">
                           <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
@@ -342,7 +387,7 @@ export default function Projects() {
                       {selectedProject.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 rounded-xl text-xs font-semibold bg-white/5 border border-white/5 text-gray-300"
+                          className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white/[0.04] border border-white/[0.06] text-gray-300 hover:border-indigo-500/20 hover:text-indigo-300 transition-colors"
                         >
                           {tech}
                         </span>
@@ -350,15 +395,15 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <div className="h-px bg-white/5 my-2" />
+                  <div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 
-                  {/* Modal Action Footer */}
-                  <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                  {/* Modal Actions */}
+                  <div className="flex flex-col sm:flex-row gap-4 pt-1">
                     <a
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:brightness-110 shadow-lg shadow-indigo-600/15 transition-all text-center"
+                      className="flex-1 btn-primary flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl text-sm font-semibold text-white text-center"
                     >
                       <Globe className="w-4 h-4" />
                       Live Demo Website
@@ -368,13 +413,13 @@ export default function Projects() {
                         href={selectedProject.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-sm font-semibold text-white bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-center"
+                        className="flex-1 btn-outline flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl text-sm font-semibold text-white text-center"
                       >
                         <GithubIcon className="w-4 h-4" />
                         Explore Repository
                       </a>
                     ) : (
-                      <span className="flex-1 py-3 px-6 rounded-xl text-sm font-semibold text-gray-500 bg-white/5 border border-white/5 text-center cursor-not-allowed select-none">
+                      <span className="flex-1 py-3.5 px-6 rounded-xl text-sm font-semibold text-gray-500 bg-white/[0.03] border border-white/[0.05] text-center cursor-not-allowed select-none">
                         Private Repository
                       </span>
                     )}

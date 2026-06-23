@@ -1,8 +1,16 @@
 "use client";
 
-import React from "react";
-import { Code2, Server, Wrench, ShieldCheck } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import { Code2, Server, Wrench } from "lucide-react";
+import SectionHeader from "@/components/ui/SectionHeader";
+import GlassCard from "@/components/ui/GlassCard";
+import { useStaggerReveal } from "@/hooks/useScrollReveal";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface SkillItem {
   name: string;
@@ -13,14 +21,55 @@ interface SkillCategoryProps {
   title: string;
   icon: React.ReactNode;
   skills: SkillItem[];
-  color: string;
+  gradientFrom: string;
+  gradientTo: string;
+  iconColor: string;
+  index: number;
 }
 
-function SkillCard({ title, icon, skills, color }: SkillCategoryProps) {
+function SkillCard({ title, icon, skills, gradientFrom, gradientTo, iconColor, index }: SkillCategoryProps) {
+  const barsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!barsRef.current) return;
+    const bars = barsRef.current.querySelectorAll(".skill-fill");
+    
+    bars.forEach((bar) => {
+      const width = bar.getAttribute("data-width") || "0";
+      gsap.fromTo(
+        bar,
+        { width: "0%" },
+        {
+          width: `${width}%`,
+          duration: 1.4,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: bar,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => {
+        const el = trigger.trigger;
+        if (el && barsRef.current?.contains(el as Node)) {
+          trigger.kill();
+        }
+      });
+    };
+  }, []);
+
   return (
-    <div className="glass-panel glass-panel-hover rounded-3xl p-6 md:p-8 flex flex-col border border-white/5 bg-black/40 text-left">
-      <div className="flex items-center gap-3.5 mb-6">
-        <div className={`p-3 rounded-2xl bg-white/5 border border-white/10 ${color}`}>
+    <GlassCard
+      className="p-6 md:p-8 flex flex-col text-left h-full"
+      tiltStrength={6}
+      glowColor={`${gradientFrom}33`}
+    >
+      <div className="flex items-center gap-3.5 mb-8">
+        <div className={`p-3 rounded-2xl bg-white/5 border border-white/[0.06] ${iconColor}`}>
           {icon}
         </div>
         <h3 className="text-lg md:text-xl font-bold text-white font-outfit">
@@ -28,38 +77,36 @@ function SkillCard({ title, icon, skills, color }: SkillCategoryProps) {
         </h3>
       </div>
 
-      <div className="space-y-6">
-        {skills.map((skill, index) => (
-          <div key={index} className="flex flex-col">
-            <div className="flex justify-between items-center mb-2 text-sm">
+      <div ref={barsRef} className="space-y-6 flex-1">
+        {skills.map((skill, i) => (
+          <div key={i} className="flex flex-col">
+            <div className="flex justify-between items-center mb-2.5 text-sm">
               <span className="font-semibold text-gray-300">{skill.name}</span>
-              <span className="text-gray-400 font-mono text-xs">{skill.percentage}%</span>
+              <span className="text-gray-500 font-mono text-xs font-bold">{skill.percentage}%</span>
             </div>
             
             {/* Progress Bar Container */}
-            <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${skill.percentage}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                className={`h-full rounded-full bg-gradient-to-r ${
-                  title.includes("Frontend") 
-                    ? "from-indigo-500 to-violet-500" 
-                    : title.includes("Backend") 
-                    ? "from-violet-500 to-fuchsia-500" 
-                    : "from-fuchsia-500 to-rose-500"
-                }`}
+            <div className="w-full h-2.5 rounded-full bg-white/[0.04] overflow-hidden skill-bar-track">
+              <div
+                className="skill-fill h-full rounded-full relative"
+                data-width={skill.percentage}
+                style={{
+                  background: `linear-gradient(90deg, ${gradientFrom}, ${gradientTo})`,
+                  width: 0,
+                  boxShadow: `0 0 12px ${gradientFrom}40`,
+                }}
               />
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </GlassCard>
   );
 }
 
 export default function Skills() {
+  const gridRef = useStaggerReveal<HTMLDivElement>({ stagger: 0.15, distance: 40 });
+
   const frontendSkills = [
     { name: "HTML5 / CSS3 (Grid/Flexbox)", percentage: 95 },
     { name: "JavaScript (ES6+) & TypeScript", percentage: 80 },
@@ -80,41 +127,49 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="relative py-24 border-t border-white/5 overflow-hidden">
-      {/* Background glow lamps */}
-      <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-indigo-500/5 glow-blur -z-10" />
+    <section id="skills" className="relative py-28 overflow-hidden">
+      {/* Section divider */}
+      <div className="absolute top-0 left-0 w-full section-divider" />
+
+      {/* Background glow */}
+      <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] bg-indigo-500/5 glow-blur -z-10" />
+      <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-violet-500/5 glow-blur -z-10" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
-        {/* Header Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-outfit text-white mb-3">
-            Technical Skillset
-          </h2>
-          <div className="h-1 w-16 bg-indigo-500 rounded-full mx-auto mb-4" />
-          <p className="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
-            Professional stack and developer tools I leverage to build scalable and responsive software.
-          </p>
-        </div>
+        <SectionHeader
+          title="Technical Skillset"
+          subtitle="Professional stack and developer tools I leverage to build scalable and responsive software."
+          badge="Skills"
+        />
 
         {/* Skill Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <SkillCard
             title="Frontend Stack"
             icon={<Code2 className="w-5 h-5" />}
             skills={frontendSkills}
-            color="text-indigo-400"
+            gradientFrom="#6366f1"
+            gradientTo="#818cf8"
+            iconColor="text-indigo-400"
+            index={0}
           />
           <SkillCard
             title="Backend & Database"
             icon={<Server className="w-5 h-5" />}
             skills={backendSkills}
-            color="text-violet-400"
+            gradientFrom="#8b5cf6"
+            gradientTo="#c084fc"
+            iconColor="text-violet-400"
+            index={1}
           />
           <SkillCard
             title="APIs & Dev Tools"
             icon={<Wrench className="w-5 h-5" />}
             skills={toolsSkills}
-            color="text-fuchsia-400"
+            gradientFrom="#a855f7"
+            gradientTo="#e879f9"
+            iconColor="text-fuchsia-400"
+            index={2}
           />
         </div>
       </div>

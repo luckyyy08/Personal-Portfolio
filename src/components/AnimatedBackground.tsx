@@ -16,56 +16,72 @@ export default function AnimatedBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+    // Performance-aware particle count
+    const isMobile = width < 768;
+    const isLowEnd = navigator.hardwareConcurrency ? navigator.hardwareConcurrency <= 4 : false;
+    const baseCount = Math.min(50, Math.floor((width * height) / 25000));
+    const particleCount = isMobile || isLowEnd ? Math.min(25, baseCount) : baseCount;
+    const connectionDistance = isMobile ? 100 : 130;
+
     const particles: Particle[] = [];
-    const particleCount = Math.min(60, Math.floor((width * height) / 20000)); // Responsive density
-    const connectionDistance = 120;
     const mouse = { x: -1000, y: -1000, active: false };
+    let scrollY = 0;
 
     class Particle {
       x: number;
       y: number;
+      baseX: number;
+      baseY: number;
       vx: number;
       vy: number;
       radius: number;
+      opacity: number;
 
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.vx = (Math.random() - 0.5) * 0.35;
+        this.vy = (Math.random() - 0.5) * 0.35;
         this.radius = Math.random() * 1.5 + 0.5;
+        this.opacity = Math.random() * 0.3 + 0.2;
       }
 
       update() {
         this.x += this.vx;
         this.y += this.vy;
 
-        // Bounce on boundaries
+        // Parallax on scroll
+        const parallaxOffset = scrollY * 0.03;
+        const displayY = this.y + parallaxOffset;
+
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
 
-        // Mouse hover interaction (gentle attraction)
+        // Mouse interaction
         if (mouse.active) {
           const dx = mouse.x - this.x;
-          const dy = mouse.y - this.y;
+          const dy = mouse.y - displayY;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 180) {
-            const force = (180 - dist) / 180;
-            this.x += (dx / dist) * force * 0.4;
-            this.y += (dy / dist) * force * 0.4;
+          if (dist < 160) {
+            const force = (160 - dist) / 160;
+            this.x += (dx / dist) * force * 0.3;
+            this.y += (dy / dist) * force * 0.3;
           }
         }
+
+        return displayY;
       }
 
-      draw(c: CanvasRenderingContext2D) {
+      draw(c: CanvasRenderingContext2D, displayY: number) {
         c.beginPath();
-        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        c.fillStyle = "rgba(139, 92, 246, 0.4)"; // Soft purple
+        c.arc(this.x, displayY, this.radius, 0, Math.PI * 2);
+        c.fillStyle = `rgba(139, 92, 246, ${this.opacity})`;
         c.fill();
       }
     }
 
-    // Initialize particles
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
@@ -86,36 +102,42 @@ export default function AnimatedBackground() {
       mouse.active = false;
     };
 
+    const handleScroll = () => {
+      scrollY = window.scrollY;
+    };
+
     window.addEventListener("resize", handleResize);
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Update and draw particles
-      particles.forEach((p) => {
-        p.update();
-        p.draw(ctx);
+      const displayPositions: number[] = [];
+
+      particles.forEach((p, i) => {
+        const displayY = p.update();
+        displayPositions[i] = displayY;
+        p.draw(ctx, displayY);
       });
 
-      // Draw lines between close particles
+      // Connection lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const p1 = particles[i];
           const p2 = particles[j];
           const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
+          const dy = displayPositions[i] - displayPositions[j];
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            // Gradient opacity based on distance
-            const alpha = (1 - dist / connectionDistance) * 0.12;
-            ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`; // Indigo connection
-            ctx.lineWidth = 0.8;
+            const alpha = (1 - dist / connectionDistance) * 0.1;
+            ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+            ctx.lineWidth = 0.6;
             ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
+            ctx.moveTo(p1.x, displayPositions[i]);
+            ctx.lineTo(p2.x, displayPositions[j]);
             ctx.stroke();
           }
         }
@@ -130,6 +152,7 @@ export default function AnimatedBackground() {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -137,7 +160,7 @@ export default function AnimatedBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none -z-10"
+      className="fixed inset-0 w-full h-full pointer-events-none -z-10 opacity-80"
       style={{ background: "#030303" }}
     />
   );
