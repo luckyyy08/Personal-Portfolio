@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 const timelineItems = [
   {
-    period: "2020 - 2026",
+    period: "2023 - 2026",
     title: "BSc Computer Science",
     org: "KTHM College, Nashik (Savitribai Phule Pune University)",
     desc: "Final year exams completed. Covered key computing foundations: Data Structures & Algorithms, Object-Oriented Programming (PHP/C++), Relational Databases (MySQL), Web Engineering, and Software Design.",
