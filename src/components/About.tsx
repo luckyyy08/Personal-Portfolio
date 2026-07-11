@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 const timelineItems = [
   {
-    period: "2023 - 2026",
+    period: "2020 - 2026",
     title: "BSc Computer Science",
     org: "KTHM College, Nashik (Savitribai Phule Pune University)",
     desc: "Final year exams completed. Covered key computing foundations: Data Structures & Algorithms, Object-Oriented Programming (PHP/C++), Relational Databases (MySQL), Web Engineering, and Software Design.",
@@ -53,7 +53,7 @@ export default function About() {
     <section id="about" className="relative py-28 overflow-hidden">
       {/* Section divider */}
       <div className="absolute top-0 left-0 w-full section-divider" />
-      
+
       {/* Background lights */}
       <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] rounded-full bg-violet-600/5 blur-[120px] pointer-events-none -z-20" />
       <div className="absolute bottom-1/3 right-1/5 w-[300px] h-[300px] rounded-full bg-indigo-600/5 blur-[120px] pointer-events-none -z-20" />
@@ -129,19 +129,17 @@ export default function About() {
                   className="relative group"
                 >
                   {/* Timeline dot */}
-                  <span className={`absolute -left-[41px] top-1 p-1.5 bg-[#0a0a0a] border-2 rounded-full transition-colors duration-300 ${
-                    item.color === "indigo" 
-                      ? "border-indigo-500/40 text-indigo-400 group-hover:border-indigo-400" 
+                  <span className={`absolute -left-[41px] top-1 p-1.5 bg-[#0a0a0a] border-2 rounded-full transition-colors duration-300 ${item.color === "indigo"
+                      ? "border-indigo-500/40 text-indigo-400 group-hover:border-indigo-400"
                       : "border-violet-500/40 text-violet-400 group-hover:border-violet-400"
-                  }`}>
+                    }`}>
                     <item.icon className="w-3.5 h-3.5" />
                   </span>
-                  
+
                   <GlassCard className="p-5 md:p-6" tiltStrength={4} glowColor={item.color === "indigo" ? "rgba(99, 102, 241, 0.1)" : "rgba(168, 85, 247, 0.1)"}>
                     <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
-                      <span className={`text-xs font-bold tracking-wider uppercase ${
-                        item.color === "indigo" ? "text-indigo-400" : "text-violet-400"
-                      }`}>
+                      <span className={`text-xs font-bold tracking-wider uppercase ${item.color === "indigo" ? "text-indigo-400" : "text-violet-400"
+                        }`}>
                         {item.period}
                       </span>
                       {item.verified && (
